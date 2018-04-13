@@ -2,7 +2,8 @@
 <?php
 	
 	include 'cabecera.php';
-	
+	$arrayProvincias = array(0=>"Álava", 1=>"Albacete", 2=>"Alicante", 3=>"Almería", 4=>"Asturias", 5=>"Ávila", 6=>"Badajoz", 7=>"Barcelona", 8=>"Burgos", 9=>"Cáceres", 10=>"Cádiz", 11=>"Cantabria", 12=>"Castellón", 13=>"Ceuta", 14=>"Ciudad Real", 15=>"Córdoba", 16=>"Cuenca", 17=>"Gerona", 18=>"Granada", 19=>"Guadalajara", 20=>"Guipúzcoa", 21=>"Huelva", 22=>"Huesca", 23=>"Islas Baleares", 24=>"Jaén", 25=>"La Coruña", 26=>"La Rioja", 27=>"Las Palmas", 28=>"León", 29=>"Lérida", 30=>"Lugo", 31=>"Madrid", 32=>"Málaga", 33=>"Melilla", 34=>"Murcia", 35=>"Navarra", 36=>"Orense", 37=>"Palencia", 38=>"Pontevedra", 39=>"Salamanca", 40=>"Santa Cruz de Tenerife", 41=>"Segovia", 42=>"Sevilla", 43=>"Soria", 44=>"Tarragona", 45=>"Teruel", 46=>"Toledo", 47=>"Valencia", 48=>"Valladolid", 49=>"Vizcaya", 50=>"Zamora", 51=>"Zaragoza");
+
 	if(isset($_GET['UsuarioId'])){
 		$usuarioId = $_GET['UsuarioId'];
 		echo "<p id='usuarioUpdate'> ID del usuario: " . $usuarioId . "</p>";
@@ -25,11 +26,23 @@
 		// Muestro el valor del nombre del usuario
 		echo $usuario[0]->Provincia;
 
+		$id = array_search($usuario[0]->Provincia, $arrayProvincias);
+		echo "ID DEL ARRAY ASOCIATIVO ES: " . $id;
+
+
+
 	} else {
 
 		echo "Se va a crear un usuario nuevo:";
 	}
 
+	
+
+	$arrayProvincias33 = array("Álava", "Albacete", "Alicante", "Almería", "Asturias", "Ávila", "Badajoz", "Barcelona", "Burgos", "Cáceres", "Cádiz", "Cantabria", "Castellón", "Ceuta", "Ciudad Real", "Córdoba", "Cuenca", "Gerona", "Granada", "Guadalajara", "Guipúzcoa", "Huelva", "Huesca", "Islas Baleares", "Jaén", "La Coruña", "La Rioja", "Las Palmas", "León", "Lérida", "Lugo", "Madrid", "Málaga", "Melilla", "Murcia", "Navarra", "Orense", "Palencia", "Pontevedra", "Salamanca", "Santa Cruz de Tenerife", "Segovia", "Sevilla", "Soria", "Tarragona", "Teruel", "Toledo", "Valencia", "Valladolid", "Vizcaya", "Zamora", "Zaragoza");
+
+	for ($i=0; $i < count($arrayProvincias33); $i++) { 
+		echo  $i."=>\"".$arrayProvincias33[$i]."\", ";
+	}
 ?>
 
 <form id="formulario" action="index.php" method="post">
@@ -94,7 +107,9 @@
 		
 		<label for="provincia">PROVINCIA</label>
 		<select name="provincia" value="<?php if(isset($_GET['UsuarioId'])){echo $usuario[0]->Provincia;} ?>">
-			
+	
+		
+
 			<option value='Álava'>Álava</option>
 			<option value='Albacete'>Albacete</option>
 			<option value='Alicante'>Alicante</option>
