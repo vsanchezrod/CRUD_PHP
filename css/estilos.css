@@ -1,0 +1,23 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+header{
+	border-bottom: 2px solid black;
+	margin-bottom: 50px;
+}
+
+body {
+	background: #A3A3A3;
+}
+
+
+table {
+	border: 2px solid black;
+}
+
+footer {
+	margin-top: 50px;
+	border-top: 2px solid black;
+}
