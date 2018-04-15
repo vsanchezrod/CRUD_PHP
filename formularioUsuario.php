@@ -163,7 +163,7 @@ Se crea formulario completo que se usa para insertar usuarios o actualizar datos
 		</select>
 	</div>
 
-	<div class="row">
+	<div class="row" id="cajagenero">
 		
 		<label for="genero">GÉNERO</label>
 		
@@ -191,7 +191,7 @@ Se crea formulario completo que se usa para insertar usuarios o actualizar datos
 
 	</div>
 
-	<div class="row">
+	<div class="row" id="condiciones">
 		
 		<!-- Input para aceptar los términos y condiciones-->
 		<input checked required name="condiciones" type="checkbox"> Acepto los <em><u>Términos y Condiciones</u></em> y la <em><u>Política de protección de datos.</u></em></p>
