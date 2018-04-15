@@ -1,3 +1,4 @@
+<!-- Se crea el pie de página -->
 <footer>
 	
 		<p>Virginia</p>

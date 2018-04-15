@@ -1,3 +1,4 @@
+<!-- Se crea la cabecera de la página en php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
