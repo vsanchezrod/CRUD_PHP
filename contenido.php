@@ -1,3 +1,21 @@
+<?php
+	if(!empty($_GET['resultado'])){
+
+		if ($_GET['resultado'] == "usuarioBorrado") {
+			echo "<H3>Usuario Borrado</H3></br>";
+		}
+
+		if ($_GET['resultado'] == "usuarioActualizado") {
+			echo "<H3>Usuario Actualizado</H3></br>";
+		}
+
+		if ($_GET['resultado'] == "usuarioCreado") {
+			echo "<H3>Usuario Creado</H3></br>";
+		}
+	}
+
+?>
+
 
 <table>
 
@@ -26,26 +44,6 @@
 </tr>
 
 <?php
-
-	// USUARIOS INSERTADO POST
-	if(isset($_POST['id'])){
-
-		$id = $_POST['id'];
-		$nombre = $_POST['nombre'];
-		$contrasena = $_POST['contrasena'];
-		$email = $_POST['email'];
-		$edad = $_POST['edad'];
-		$fecha = $_POST['fecha'];
-		$direccion = $_POST['direccion'];
-		$codigoPostal = $_POST['codigoPostal'];
-		$provincia = $_POST['provincia'];
-		$genero = $_POST['genero'];
-		
-		include 'consultas.php';
-
-		insertar($nombre, $contrasena, $email, $edad, $fecha, $direccion, $codigoPostal, $provincia, $genero);
-	}
-
 
 	// Crea la conexión
 	include 'conexion.php'; /*NO SE SI LO TENGO QUE QUITAR O QUE!!!*/
@@ -78,19 +76,23 @@
 	<td> <?php echo $usuario->Genero?> </td>
 	
 	<td>
-		<!--Se pasa por URL con GET el valor de la variable id-->
-		<a href="consultas.php?Id=<?php echo $usuario->Id?>">
-			<input type="button" value="DEL" name="DEL" />
-		</a>
+		<!--PRUEBA actualizar con post-->
+		<form action="formularioUsuario.php?opcion=borrar" method="POST">
+			<input type="hidden" name="id" value="<?= $usuario->Id ?>" >			
+			<input type="submit" value="Borrar" name="borrar" />
+		</form>
+			
+	</td>
+
+	<td>
+		<!--PRUEBA actualizar con post-->
+		<form action="formularioUsuario.php?opcion=actualizar" method="POST">
+			<input type="hidden" name="id" value="<?= $usuario->Id ?>" >			
+			<input type="submit" value="Actualizar" name="actualizar" />
+		</form>
 			
 	</td>
 	
-	<td>
-		<a href="formularioUsuario.php?UsuarioId=<?php echo $usuario->Id?>">
-			<input type="button" value="UPD" name="UPD" />
-		</a>
-	</td>
-
 </tr>
 
 

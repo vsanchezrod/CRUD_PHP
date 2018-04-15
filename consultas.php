@@ -17,6 +17,21 @@
 
 	// FUNCIONES
 
+	function actualizarUsuario($id, $nombre, $contrasena, $email, $edad, $fecha, $direccion, $codigoPostal, $provincia, $genero){
+
+		include 'conexion.php';
+		$query = "UPDATE usuarios SET Nombre = '$nombre', Contrasena = '$contrasena', Email = '$email', Edad = '$edad', FechaNacimiento = '$fecha', Direccion = '$direccion', CodigoPostal =  '$codigoPostal', Provincia = '$provincia', Genero = '$genero' WHERE Id = '$id'";
+
+		$conexion->query($query);
+		// Se cierra la conexión con la base de datos
+		$conexion = null;
+	}
+
+
+
+
+
+
 	//<-- SELECCIONAR USUARIO-->
 
 	function seleccionarUsuario($usuarioId){
@@ -24,9 +39,10 @@
 		$query = "SELECT * FROM usuarios WHERE Id = $usuarioId";
 		$resultado = $conexion->query($query);
 		$registro = $resultado->fetchAll (PDO::FETCH_OBJ);
-		$conn = null;
-		echo "Usuario seleccionado";
+		// Se cierra la conexión con la base de datos
+		$conexion = null;
 		return $registro;
+
 	}
 
 	function insertar($nombre, $contrasena, $email, $edad, $fecha, $direccion, $codigoPostal, $provincia, $genero){
@@ -38,6 +54,8 @@
 		if($resultado){
 			echo "<p> Un nuevo usuario ha sido insertado en la base de datos!!!</p>";
 		}
+		// Se cierra la conexión con la base de datos
+		$conexion = null;
 	}
 
 	function borrar($id){
@@ -52,18 +70,11 @@
 		// Dentro de la variable $resultado se tiene un resulset con el registro a borrar
 		$resultado = $conexion->query($query);
 
-		// Redirigimos a la página de inicio
-		header("Location: index.php");
-
 		// Se cierra la conexión con la base de datos
-		$conn = null;
+		$conexion = null;
 
 	}
-
-	// FALTA EL MENSAJE DE QUE SE HA ELIMINADO UN USUARIO
-
-	
 ?>
 
 
-<!-- INSERTAR USUARIO-->
+

@@ -15,7 +15,7 @@
 			
 			<ul>
 				<li><a href="index.php">INICIO</a></li>
-				<li><a href="formularioUsuario.php">CREAR USUARIO</a></li>
+				<li><a href="formularioUsuario.php?opcion=crear">CREAR USUARIO</a></li>
 			</ul>
 
 		</div>

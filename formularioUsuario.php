@@ -2,176 +2,183 @@
 <?php
 	
 	include 'cabecera.php';
-	$arrayProvincias = array(0=>"Álava", 1=>"Albacete", 2=>"Alicante", 3=>"Almería", 4=>"Asturias", 5=>"Ávila", 6=>"Badajoz", 7=>"Barcelona", 8=>"Burgos", 9=>"Cáceres", 10=>"Cádiz", 11=>"Cantabria", 12=>"Castellón", 13=>"Ceuta", 14=>"Ciudad Real", 15=>"Córdoba", 16=>"Cuenca", 17=>"Gerona", 18=>"Granada", 19=>"Guadalajara", 20=>"Guipúzcoa", 21=>"Huelva", 22=>"Huesca", 23=>"Islas Baleares", 24=>"Jaén", 25=>"La Coruña", 26=>"La Rioja", 27=>"Las Palmas", 28=>"León", 29=>"Lérida", 30=>"Lugo", 31=>"Madrid", 32=>"Málaga", 33=>"Melilla", 34=>"Murcia", 35=>"Navarra", 36=>"Orense", 37=>"Palencia", 38=>"Pontevedra", 39=>"Salamanca", 40=>"Santa Cruz de Tenerife", 41=>"Segovia", 42=>"Sevilla", 43=>"Soria", 44=>"Tarragona", 45=>"Teruel", 46=>"Toledo", 47=>"Valencia", 48=>"Valladolid", 49=>"Vizcaya", 50=>"Zamora", 51=>"Zaragoza");
 
-	if(isset($_GET['UsuarioId'])){
-		$usuarioId = $_GET['UsuarioId'];
-		echo "<p id='usuarioUpdate'> ID del usuario: " . $usuarioId . "</p>";
+	// Opción de Actualizar (carga los datos en el formulario)
+	if(!empty($_GET['opcion']) && $_GET['opcion'] == 'actualizar'){
+
+		echo "<H3>Actualización de usuario</H3>";
 		include 'consultas.php';
-		$usuario = seleccionarUsuario($usuarioId);
-		
-		// ESTO ES PARA ENTENDERME!!! xDD
-
-		//var_dump($usuario);
-		echo "<p> ARRAY COMPLETO <br></p>";
-		// Array con un objeto que es el usuario de la tabla
-		var_dump($usuario);
-		// Muestro el primer elemento del array que es el objeto del usuario
-		echo "<p> PRIMER ELEMENTO DEL ARRAY <br></p>";
-		var_dump($usuario[0]);
-		// Con eso muestro la propiedad Nombre del usuario
-		echo "<p> ELEMENTO NOMBRE DEL PRIMER ELEMENTO DEL ARRAY <br></p>";
-		var_dump($usuario[0]->Nombre);
-		echo "<p> TEXTO DEL NOMBRE </p>";
-		// Muestro el valor del nombre del usuario
-		echo $usuario[0]->Provincia;
-
-		$id = array_search($usuario[0]->Provincia, $arrayProvincias);
-		echo "ID DEL ARRAY ASOCIATIVO ES: " . $id;
-
-
-
-	} else {
-
-		echo "Se va a crear un usuario nuevo:";
+		$usuario = seleccionarUsuario($_POST['id']);
 	}
 
+	// Opción de Crear (carga el formulario vacío)
+	if(!empty($_GET['opcion']) && $_GET['opcion'] == 'crear'){
+
+		echo "<H3>Creación de usuario</H3>";
+	}
 	
+	// Opción de insertar (inserta o modifica el usuario en la base de datos)
+	if(!empty($_GET['opcion']) && $_GET['opcion'] == 'insertar'){
 
-	$arrayProvincias33 = array("Álava", "Albacete", "Alicante", "Almería", "Asturias", "Ávila", "Badajoz", "Barcelona", "Burgos", "Cáceres", "Cádiz", "Cantabria", "Castellón", "Ceuta", "Ciudad Real", "Córdoba", "Cuenca", "Gerona", "Granada", "Guadalajara", "Guipúzcoa", "Huelva", "Huesca", "Islas Baleares", "Jaén", "La Coruña", "La Rioja", "Las Palmas", "León", "Lérida", "Lugo", "Madrid", "Málaga", "Melilla", "Murcia", "Navarra", "Orense", "Palencia", "Pontevedra", "Salamanca", "Santa Cruz de Tenerife", "Segovia", "Sevilla", "Soria", "Tarragona", "Teruel", "Toledo", "Valencia", "Valladolid", "Vizcaya", "Zamora", "Zaragoza");
+		$id = $_POST['id'];
+		$nombre = $_POST['nombre'];
+		$contrasena = $_POST['contrasena'];
+		$email = $_POST['email'];
+		$edad = $_POST['edad'];
+		$fecha = $_POST['fecha'];
+		$direccion = $_POST['direccion'];
+		$codigoPostal = $_POST['codigoPostal'];
+		$provincia = $_POST['provincia'];
+		$genero = $_POST['genero'];
 
-	for ($i=0; $i < count($arrayProvincias33); $i++) { 
-		echo  $i."=>\"".$arrayProvincias33[$i]."\", ";
+		include 'consultas.php';
+		
+		if(!empty($id)){
+			actualizarUsuario($id, $nombre, $contrasena, $email, $edad, $fecha, $direccion, $codigoPostal, $provincia, $genero);
+			header("Location: index.php?resultado=usuarioActualizado");
+		}
+
+		else {
+			insertar($nombre, $contrasena, $email, $edad, $fecha, $direccion, $codigoPostal, $provincia, $genero);
+			header("Location: index.php?resultado=usuarioCreado");
+		}
 	}
+
+	// Opción de borrar (borra el usuario)
+	if(!empty($_GET['opcion']) && $_GET['opcion'] == 'borrar'){
+
+		include 'consultas.php';
+		borrar($_POST['id']);
+		// Redirigimos a la página de inicio
+		header("Location: index.php?resultado=usuarioBorrado");
+	}
+
+
+
+
+
+
+
+
+	// Array con todas las provincias españolas
+	$arrayProvincias = ['Alava','Albacete','Alicante','Almería','Asturias','Avila','Badajoz','Barcelona','Burgos','Cáceres',
+	'Cádiz','Cantabria','Castellón','Ceuta','Ciudad Real','Córdoba','La Coruña','Cuenca','Gerona','Granada','Guadalajara',
+	'Guipúzcoa','Huelva','Huesca','Islas Baleares','Jaén','León','Lérida','Lugo','Madrid','Málaga','Melilla','Murcia','Navarra',
+	'Orense','Palencia','Las Palmas','Pontevedra','La Rioja','Salamanca','Segovia','Sevilla','Soria','Tarragona',
+	'Santa Cruz de Tenerife','Teruel','Toledo','Valencia','Valladolid','Vizcaya','Zamora','Zaragoza'];
+	
 ?>
 
-<form id="formulario" action="index.php" method="post">
+<form id="formulario" action="formularioUsuario.php?opcion=insertar" method="post">
 	
 	<div class="row">
 		
 		<label for="id"></label>
-		<input name="id" type="hidden" value="">
+		<input name="id" type="hidden" value="<?php if(!empty($usuario[0]->Id)) {echo $usuario[0]->Id;} ?>">
 
 	</div>
+
 
 	<div class="row">
 		
 		<label for="nombre">NOMBRE</label>
-		<input name="nombre" type="text" value="<?php if(isset($_GET['UsuarioId'])){echo $usuario[0]->Nombre;} ?> ">
+		<input name="nombre" type="text" value="<?php if(!empty($usuario[0]->Nombre)) {echo $usuario[0]->Nombre;} ?>">
 
 	</div>
 
 	<div class="row">
 		
 		<label for="contrasena">CONTRASEÑA</label>
-		<input name="contrasena" type="password" value="<?php if(isset($_GET['UsuarioId'])){echo $usuario[0]->Contrasena;} ?>">
+		<input name="contrasena" type="password" value="<?php if(!empty($usuario[0]->Contrasena)) {echo $usuario[0]->Contrasena;} ?>">
 
 	</div>
 
 	<div class="row">
 		
 		<label for="email">EMAIL</label>
-		<input name="email" type="email" value="<?php if(isset($_GET['UsuarioId'])){echo $usuario[0]->Email;} ?>">
+		<input name="email" type="email" value="<?php if(!empty($usuario[0]->Email)) {echo $usuario[0]->Email;} ?>">
 
 	</div>
 
 	<div class="row">
 		
 		<label for="edad">EDAD</label>
-		<input name="edad" type="number" value="<?php if(isset($_GET['UsuarioId'])){echo $usuario[0]->Edad;} ?>">
-
+		<input name="edad" type="number" value="<?php if(!empty($usuario[0]->Edad)) {echo $usuario[0]->Edad;} ?>">
 	</div>
 
 	<div class="row">
 		
 		<label for="fecha">FECHA DE NACIMIENTO</label>
-		<input name="fecha" type="date" min="1900-01-01" value="<?php if(isset($_GET['UsuarioId'])){echo $usuario[0]->FechaNacimiento;}?>">
+		<input name="fecha" type="date" min="1900-01-01" value="<?php if(!empty($usuario[0]->FechaNacimiento)) {echo $usuario[0]->FechaNacimiento;} ?>">
 
 	</div>
 
 	<div class="row">
 		
 		<label for="direccion">DIRECCIÓN</label>
-		<input name="direccion" type="text" value="<?php if(isset($_GET['UsuarioId'])){echo $usuario[0]->Direccion;} ?>">
+		<input name="direccion" type="text" value="<?php if(!empty($usuario[0]->Direccion)) {echo $usuario[0]->Direccion;} ?>">
 
 	</div>
 
 	<div class="row">
 		
 		<label for="codigoPostal">CÓDIGO POSTAL</label>
-		<input name="codigoPostal" type="number" value="<?php if(isset($_GET['UsuarioId'])){echo $usuario[0]->CodigoPostal;}?>">
+		<input name="codigoPostal" type="number" value="<?php if(!empty($usuario[0]->CodigoPostal)) {echo $usuario[0]->CodigoPostal;} ?>">
 
 	</div>
 
 	<div class="row">
 		
 		<label for="provincia">PROVINCIA</label>
-		<select name="provincia" value="<?php if(isset($_GET['UsuarioId'])){echo $usuario[0]->Provincia;} ?>">
-	
-		
 
-			<option value='Álava'>Álava</option>
-			<option value='Albacete'>Albacete</option>
-			<option value='Alicante'>Alicante</option>
-			<option value='Almería'>Almería</option>
-			<option value='Asturias'>Asturias</option>
-			<option value='Ávila'>Ávila</option>
-			<option value='Badajoz'>Badajoz</option>
-			<option value='Barcelona'>Barcelona</option>
-			<option value='Burgos'>Burgos</option>
-			<option value='Caceres'>Cáceres</option>
-			<option value='Cádiz'>Cádiz</option>
-			<option value='Cantabria'>Cantabria</option>
-			<option value='Castellón'>Castellón</option>
-			<option value='Ceuta'>Ceuta</option>
-			<option value='Ciudad Real'>Ciudad Real</option>
-			<option value='Córdoba'>Córdoba</option>
-			<option value='Cuenca'>Cuenca</option>
-			<option value='Girona'>Girona</option>
-			<option value='Las Palmas'>Las Palmas</option>
-			<option value='Granada'>Granada</option>
-			<option value='Guadalajara'>Guadalajara</option>
-			<option value='Guipuzcoa'>Guipúzcoa</option>
-			<option value='Huelva'>Huelva</option>
-			<option value='Huesca'>Huesca</option>
-			<option value='Islas Baleares'>Islas Baleares</option>
-			<option value='Jaén'>Jaén</option>
-			<option value='A Coruña'>A Coruña</option>
-			<option value='La Rioja'>La Rioja</option>
-			<option value='León'>León</option>
-			<option value='Lleida'>Lleida</option>
-			<option value='Lugo'>Lugo</option>
-			<option value='Madrid'>Madrid</option>
-			<option value='Málaga'>Málaga</option>
-			<option value='Melilla'>Melilla</option>
-			<option value='Murcia'>Murcia</option>
-			<option value='Navarra'>Navarra</option>
-			<option value='Ourense'>Ourense</option>
-			<option value='Palencia'>Palencia</option>
-			<option value='Pontevedra'>Pontevedra</option>
-			<option value='Salamanca'>Salamanca</option>
-			<option value='Segovia'>Segovia</option>
-			<option value='Sevilla'>Sevilla</option>
-			<option value='Soria'>Soria</option>
-			<option value='Tarragona'>Tarragona</option>
-			<option value='Santa Cruz de Tenerife'>Santa Cruz de Tenerife</option>
-			<option value='Teruel'>Teruel</option>
-			<option value='Toledo'>Toledo</option>
-			<option value='Valencia'>Valencia</option>
-			<option value='Valladolid'>Valladolid</option>
-			<option value='Vizcaya'>Vizcaya</option>
-			<option value='Zamora'>Zamora</option>
- 			<option value='Zaragoza'>Zaragoza</option>
-		
+		<select name="provincia" value="">
+			
+			<?php 
+
+				$provinciaUsuario = $usuario[0]->Provincia;
+
+				for($i = 0; $i < count($arrayProvincias); $i++) { 
+
+					if ($arrayProvincias[$i] == $provinciaUsuario){ ?> 
+						<option selected="selected" value="<?= $arrayProvincias[$i] ?>"> <?= $arrayProvincias[$i] ?> </option> 
+					<?php }
+					else{ ?>
+						<option value="<?= $arrayProvincias[$i] ?>"> <?= $arrayProvincias[$i] ?> </option> 
+					<?php }?>
+					
+				<?php }	
+			?>
+	
 		</select>
+
+	
+
 
 	</div>
 
 	<div class="row">
 		
+		
 		<label for="genero">GÉNERO</label>
-		<input name="genero" type="radio" value="Hombre" checked> Hombre 
-		<input name="genero" type="radio" value="Mujer"> Mujer 
+		
+		<?php 
+			
+			if(!empty($usuario[0]->Genero)){
+				if($usuario[0]->Genero == "Hombre"){
+					echo "<input name='genero' type='radio' value='Hombre' checked> Hombre";
+					echo "<input name='genero' type='radio' value='Mujer'> Mujer";
+				}
+				else {
+					echo "<input name='genero' type='radio' value='Hombre'> Hombre";
+					echo "<input name='genero' type='radio' value='Mujer' checked> Mujer";
+				}
+			} 
+			else {
+				echo "<input name='genero' type='radio' value='Hombre'> Hombre";
+				echo "<input name='genero' type='radio' value='Mujer'> Mujer";
+			}
+
+		?>
 
 	</div>
 
