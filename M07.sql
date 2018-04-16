@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 13-04-2018 a las 21:38:35
+-- Tiempo de generación: 16-04-2018 a las 18:21:27
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.1
 
@@ -46,11 +46,17 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`Id`, `Nombre`, `Contrasena`, `Email`, `Edad`, `FechaNacimiento`, `Direccion`, `CodigoPostal`, `Provincia`, `Genero`) VALUES
-(22, 'Lolo', '123', 'lolo@lolo.es', 34, '1980-04-05', 'Calle Plata', 28963, 'Madrid', 'Hombre'),
-(23, 'Josefa', '123', 'josefa@lolo.es', 54, '1955-01-12', 'Calle PHP TE ODIO', 28933, 'Lleida', 'Hombre'),
-(24, 'Sergio', 'lala', 'cachoguapo@loco.es', 26, '2000-05-25', 'Calle de la locura', 28965, 'Burgos', 'Hombre'),
-(25, ' Sergio', 'asdadsad', 'Sergio@sdsd.es', 23, '1985-12-02', 'Orusco', 28989, 'Las Palmas', 'Hombre'),
-(26, ' V', '123', 'q@q', 34, '1956-12-02', 'adsada', 2895, 'Ãlava', 'Mujer');
+(23, 'Josefa', 'eufmtrks', 'josefa@ilerna.es', 54, '1955-01-12', 'Calle Serrano', 52001, 'Ciudad Real', 'Mujer'),
+(24, 'Sergio', 'lala', 'sergio@php.es', 26, '1989-05-25', 'Calle Princesa', 28965, 'Burgos', 'Hombre'),
+(25, 'Juan', 'uwjcvm56', 'juan@yahoo.es', 33, '1985-12-02', 'Calle Viena', 28989, 'Las Palmas', 'Hombre'),
+(26, ' Virginia', '12345678', 'vir@query.es', 62, '1956-12-02', 'Calle Ãvila', 15236, 'Cuenca', 'Mujer'),
+(28, 'Jose Manoli', 'zxcz', 'manoli@asdad', 68, '1950-04-05', 'Calle Legazpi', 32965, 'CÃ¡diz', 'Mujer'),
+(31, 'Lolo ', '789456', 'lolo@lolo.es', 38, '1980-02-08', 'Calle Javascript', 8963, 'Barcelona', 'Hombre'),
+(32, 'Vero', 'orlfk783', 'vero@ilerna.es', 45, '1973-04-05', 'Calle Silvela', 28963, 'Lugo', 'Mujer'),
+(33, 'Carlos', 'qwefgh78', 'carlos@lopez.es', 33, '1985-12-01', 'Calle Argentina', 15489, 'Huesca', 'Hombre'),
+(34, 'Paco', 'cghj78qw', 'paco@ibm.es', 48, '1990-12-02', 'Calle Velazquez', 28935, 'Madrid', 'Hombre'),
+(43, ' Sergio ', 'asdadsad', 'Sergio@sdsd.es', 23, '1985-12-02', 'Avenida Madrid', 35697, 'Asturias', 'Hombre'),
+(44, 'Lola', '123', 'lola@lolo1.es', 34, '1980-04-05', 'Calle del Carmen', 4968, 'Alicante', 'Mujer');
 
 --
 -- Índices para tablas volcadas
@@ -70,7 +76,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
