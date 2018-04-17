@@ -75,7 +75,7 @@
 Se crea formulario completo que se usa para insertar usuarios o actualizar datos de un usuario existente-->
 
 
-<form id="formulario" action="formularioUsuario.php?opcion=insertar" method="post">
+<form class="formulario" action="formularioUsuario.php?opcion=insertar" method="post">
 	
 	<!-- En cada input de formulario se controla si se le está pasando un usuario o no para mostrar datos -->
 	<div class="row">

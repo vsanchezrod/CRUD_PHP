@@ -5,15 +5,15 @@
 	if(!empty($_GET['resultado'])){
 
 		if ($_GET['resultado'] == "usuarioBorrado") {
-			echo "<H3>Usuario Borrado</H3></br>";
+			echo "<H3 class='fade'>Usuario Borrado</H3></br>";
 		}
 
 		if ($_GET['resultado'] == "usuarioActualizado") {
-			echo "<H3>Usuario Actualizado</H3></br>";
+			echo "<H3 class='fade'>Usuario Actualizado</H3></br>";
 		}
 
 		if ($_GET['resultado'] == "usuarioCreado") {
-			echo "<H3>Usuario Creado</H3></br>";
+			echo "<H3 class='fade'>Usuario Creado</H3></br>";
 		}
 	}
 
@@ -90,9 +90,9 @@
 
 
 <?php
+
 	// Se cierra el bucle foreach
 	endforeach;
-
 ?>
 
 </table>
