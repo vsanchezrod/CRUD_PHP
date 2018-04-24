@@ -44,8 +44,6 @@
 
 	$query = "SELECT * FROM usuarios";
 
-	
-
 
 
 	/*-----------------------------------NUEVO---------------------------------------------*/
@@ -55,8 +53,31 @@
 	// Variable que le dice al programa cuantos registros habrá por página
 	$registrosPorPagina = 10;
 
-	// Variable que mostrará la pagina cuando cargamos nuestro index (empezará por defecto en la página 1)
-	$pagina = 1;
+
+	/* Si la variable pagina está seteada, es decir, se está usando la paginación porque le llega por URL
+	el valor de la variable pagina, entonces vamos a ver que página es*/
+
+	if(isset($_GET['pagina'])){
+
+		// COGER POR GET LA PAGINA QUE SE QUIERE VER
+		if ($_GET['pagina'] == 1){
+
+			// Si la variable página que llega por la URL vale 1, se redirige la página al index.php
+			header ("Location:index.php");
+		}
+
+		else {
+			// Guardamos en la variable $pagina el valor que llega por GET
+			$pagina = $_GET['pagina'];
+		}
+
+	}
+
+	else {
+
+		// Variable que mostrará la pagina cuando cargamos nuestro index (empezará por defecto en la página 1)
+		$pagina = 1;
+	}
 
 	// Se crea una variable para indicar desde que registro se va a empezar a mostrar.
 	// Si estamos en la pagina 1, el primer registro va a ser ((1-1)*10) = 0
@@ -90,9 +111,11 @@
 	// Se calcula el nº de páginas que tendrá la paginación, usando la función ceil que redondea el resultado hacia arriba
 	$numeroPaginas = ceil($numeroRegistros/$registrosPorPagina);
 
-	echo "Número de registros por columna: " . $registrosPorPagina ."<br>";
+	/*echo "Número de registros por columna: " . $registrosPorPagina ."<br>";
 	echo "Número de registros totales: " . $numeroRegistros ."<br>";
 	echo "Número de páginas disponibles: " . $numeroPaginas ."<br>";
+	echo "Pagina a mostrar: " . $pagina ."<br>";*/
+
 
 
 	/************ AHORA. Añadimos a query el LIMIT que puede recibir dos parámetros*************
@@ -162,12 +185,24 @@
 
 </table>
 
+<div id="paginacion">
+	
+	<img src="images/backward2.png" alt="Anterior"> 
+	
+	<?php 
 
-<?php 
+	// NUEVO---------------------- PAGINACIÓN ------------------------------------
 
+		// Bucle FOR que crea la paginación
+		for ($i = 1; $i <= $numeroPaginas; $i++) {
 
+			// Se crea un enlace a la página correspondiente de la paginación
+			// Se le va a pasar en la URL un parámetro que se llama página
+			echo "<a href='?pagina=" . $i . "'>" . $i . "</a> ";
+		}
 
+	?>
+	
+	<img src="images/forward3.png" alt="Anterior">
 
-
-
-?>
+</div>
