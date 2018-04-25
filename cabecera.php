@@ -13,6 +13,10 @@
 	<header>
 		
 		<?php
+			
+			// Renaudar sesión en el caso de que la hubiera
+			session_start();
+
 			/* Se comprueba en la cabecera si están llegando por POST datos desde el login
 			con el fin de iniciar sesion y mostrar unos contenidos u otros*/
 			if (isset($_POST['email'])) {
@@ -22,7 +26,7 @@
 				// Si se encuentra usuario registrado
 				if ($usuario != 0) {
 					// Se inicia sesión con session_start()
-					session_start();
+					//session_start();
 					// Se almacena en la variable superglobal el email del usuario
 					$_SESSION['usuario'] = $_POST['email'];
 				}
@@ -32,11 +36,6 @@
 				header("Location:login.php");
 				}
 			}
-
-			else {
-				header("Location:index.php");
-			}
-
 
 		?>
 
@@ -60,8 +59,8 @@
 					else { ?>
 						<!--Se crea un nuevo botón para acceder al LOGIN del usuario-->
 						<!-- SI hay session abierta del usuario:-->
-						<button id="logout">LOGOUT</button>  
-						<li> <?php echo $_POST['email']; ?> </li>
+						<button id="logout"><a href="index.php?logout=1">LOGOUT</a></button>  
+						<li> <?php echo $_SESSION['usuario']; ?> </li>
 						<li><a href="index.php">INICIO</a></li>
 						<li><a href="formularioUsuario.php?opcion=crear">CREAR USUARIO</a></li>
 						<li><a href="formularioProvincias.php">CREAR PROVINCIA</a></li>

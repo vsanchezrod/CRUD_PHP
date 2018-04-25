@@ -17,6 +17,14 @@
 		}
 	}
 
+	/*NUEVO LOGOUT*/
+	if(isset($_GET['logout'])){
+		if ($_GET['logout'] == "1") {
+			session_start();
+			session_destroy();
+			header ("Location:index.php");
+		}
+	}
 
 ?>
 
