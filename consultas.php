@@ -71,6 +71,29 @@
 		$conexion = null;
 
 	}
+
+/*AÑADIDO NUEVO LOGIN*/
+
+	// Función que comprueba si existe un usuario en la base de datos
+	function comprobarUsuario($email, $contrasena){
+
+		// Se incluye la conexión
+		include 'conexion.php';
+
+		// Query que busca el Id del usuario que se han introducido en el login
+		$query = "SELECT Id FROM usuarios WHERE Email = '$email' AND Contrasena = '$contrasena'";
+
+		// Se ejecuta la sentencia SQL con la conexión
+		$resultado = $conexion->query($query);
+
+		// Se almacena el resultado en un array de objetos 
+		$registro = $resultado->fetchAll (PDO::FETCH_OBJ);
+
+		// Se utiliza la funcion count() para ver cuantos elementos tiene el array
+		/*Si el valor es 0, no existe ese usuario, si es 1 si existe*/
+		return $encontrado = count($registro);
+	}
+
 ?>
 
 

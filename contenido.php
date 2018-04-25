@@ -17,6 +17,7 @@
 		}
 	}
 
+
 ?>
 
 <!-- Se crea una tabla con sus cabeceras, donde se mostrarán los usuarios de la BBDD-->
@@ -156,23 +157,30 @@
 	<td> <?php echo $usuario->Provincia?> </td>
 	<td> <?php echo $usuario->Genero?> </td>
 	
-	<td>
-		<!-- Formulario que pasa por queryparam la opción de borrado y la ID por POST-->
-		<form action="formularioUsuario.php?opcion=borrar" method="POST">
-			<input type="hidden" name="id" value="<?= $usuario->Id ?>" >			
-			<input type="submit" value="Borrar" name="borrar" />
-		</form>
-			
-	</td>
+	
+	<?php
+	// Si existe sessión iniciada	
+		if(isset($_SESSION['usuario'])){ ?>
 
-	<td>
-		<!-- Formulario que pasa por queryparam la opción de actualizar y la ID por POST-->
-		<form action="formularioUsuario.php?opcion=actualizar" method="POST">
-			<input type="hidden" name="id" value="<?= $usuario->Id ?>" >			
-			<input type="submit" value="Actualizar" name="actualizar" />
-		</form>
-			
-	</td>
+			<td>
+				<!-- Formulario que pasa por queryparam la opción de borrado y la ID por POST-->
+				<form action="formularioUsuario.php?opcion=borrar" method="POST">
+					<input type="hidden" name="id" value="<?= $usuario->Id ?>" >			
+					<input type="submit" value="Borrar" name="borrar" />
+				</form>
+					
+			</td>
+
+			<td>
+				<!-- Formulario que pasa por queryparam la opción de actualizar y la ID por POST-->
+				<form action="formularioUsuario.php?opcion=actualizar" method="POST">
+					<input type="hidden" name="id" value="<?= $usuario->Id ?>" >			
+					<input type="submit" value="Actualizar" name="actualizar" />
+				</form>
+					
+			</td> 
+		<?php }
+	?>
 	
 </tr>
 

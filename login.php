@@ -4,7 +4,6 @@
 	<meta charset="UTF-8">
 	<title>LOGIN</title>
 	<link rel="stylesheet" href="css/estilosLogin.css">
-
 </head>
 <body>
 	<form class="formulario" id="formularioLogin" action="index.php" method="post">
@@ -25,6 +24,24 @@
 		</div>
 
 	</form>
+
+
+
+
+<?php 
+
+/*PRUEBAS DEL LOGIN*/
+
+/*include 'consultas.php';
+
+	if (isset($_POST['email'])) {
+		$usuario = comprobarUsuario($_POST['email'], $_POST['contrasena']);
+		echo 'Usuario encontrado';
+		var_dump($usuario);
+	}
+*/
+
+?>
 
 </body>
 </html>
