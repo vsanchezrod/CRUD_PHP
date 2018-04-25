@@ -26,11 +26,18 @@
 					// Se almacena en la variable superglobal el email del usuario
 					$_SESSION['usuario'] = $_POST['email'];
 				}
+
 				else {
-					// Si no hay usuario redirigimos a la página de login
-					header("Location:login.php");
+				// Si no hay usuario redirigimos a la página de login
+				header("Location:login.php");
 				}
 			}
+
+			else {
+				header("Location:index.php");
+			}
+
+
 		?>
 
 
@@ -45,7 +52,8 @@
 
 					// Si NO hay session abierta del usuario:
 					if(!isset($_SESSION['usuario'])){ ?>
-						<button onclick="abrirVentana()">LOGIN</button>
+						<button><a href="login.php">LOGIN</a></button>
+						<!--<button onclick="abrirVentana()">LOGIN</button>-->
 						<li><a href="index.php">INICIO</a></li>
 					<?php }
 

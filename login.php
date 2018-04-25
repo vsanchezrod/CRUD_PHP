@@ -26,23 +26,6 @@
 	</form>
 
 
-
-
-<?php 
-
-/*PRUEBAS DEL LOGIN*/
-
-/*include 'consultas.php';
-
-	if (isset($_POST['email'])) {
-		$usuario = comprobarUsuario($_POST['email'], $_POST['contrasena']);
-		echo 'Usuario encontrado';
-		var_dump($usuario);
-	}
-*/
-
-?>
-
 </body>
 </html>
 

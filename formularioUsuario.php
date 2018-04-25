@@ -32,7 +32,6 @@
 		$provincia = $_POST['provincia'];
 		$genero = $_POST['genero'];
 
-		include 'consultas.php';
 		
 		// Si se ha recibido un id entonces se llama a la funcion ACTUALIZAR
 		if(!empty($id)){
