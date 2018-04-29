@@ -3,6 +3,12 @@
 	//Se incluye la cabecera.php	
 	include 'cabecera.php';
 
+	// NUEVO - Si no hay sessio iniciada se redirige al index
+	if(!isset($_SESSION['usuario'])){
+		header ("Location: login.php");
+	}
+	
+	
 	// Opción de Actualizar (carga los datos en el formulario)
 	if(!empty($_GET['opcion']) && $_GET['opcion'] == 'actualizar'){
 
@@ -60,13 +66,13 @@
 		header("Location: index.php?resultado=usuarioBorrado");
 	}
 
-
-	// Creación de un array con todas las provincias españolas
+	//BORRAR!!!!!!
+	/*// Creación de un array con todas las provincias españolas
 	$arrayProvincias = ['Alava','Albacete','Alicante','Almería','Asturias','Avila','Badajoz','Barcelona','Burgos','Cáceres',
 	'Cádiz','Cantabria','Castellón','Ceuta','Ciudad Real','Córdoba','La Coruña','Cuenca','Gerona','Granada','Guadalajara',
 	'Guipúzcoa','Huelva','Huesca','Islas Baleares','Jaén','León','Lérida','Lugo','Madrid','Málaga','Melilla','Murcia','Navarra',
 	'Orense','Palencia','Las Palmas','Pontevedra','La Rioja','Salamanca','Segovia','Sevilla','Soria','Tarragona',
-	'Santa Cruz de Tenerife','Teruel','Toledo','Valencia','Valladolid','Vizcaya','Zamora','Zaragoza'];
+	'Santa Cruz de Tenerife','Teruel','Toledo','Valencia','Valladolid','Vizcaya','Zamora','Zaragoza'];*/
 	
 ?>
 
@@ -95,14 +101,14 @@ Se crea formulario completo que se usa para insertar usuarios o actualizar datos
 	<div class="row">
 		
 		<label for="contrasena">CONTRASEÑA</label>
-		<input name="contrasena" type="password" value="<?php if(!empty($usuario[0]->Contrasena)) {echo $usuario[0]->Contrasena;} ?>">
+		<input required name="contrasena" type="password" value="<?php if(!empty($usuario[0]->Contrasena)) {echo $usuario[0]->Contrasena;} ?>">
 
 	</div>
 
 	<div class="row">
 		
 		<label for="email">EMAIL</label>
-		<input name="email" type="email" value="<?php if(!empty($usuario[0]->Email)) {echo $usuario[0]->Email;} ?>">
+		<input required name="email" type="email" value="<?php if(!empty($usuario[0]->Email)) {echo $usuario[0]->Email;} ?>">
 
 	</div>
 

@@ -2,6 +2,11 @@
 
 	//Se incluye la cabecera.php	
 	include 'cabecera.php';
+	
+	// NUEVO - Si no hay sessio iniciada se redirige al index
+	if(!isset($_SESSION['usuario'])){
+		header ("Location: login.php");
+	}
 
 ?>
 

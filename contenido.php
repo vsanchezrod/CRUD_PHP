@@ -50,7 +50,6 @@
 	include 'conexion.php';
 
 	// Se crea la query para consultar todos los usuarios de la tabla
-
 	$query = "SELECT * FROM usuarios";
 
 
