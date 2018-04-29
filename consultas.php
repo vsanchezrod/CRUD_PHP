@@ -116,6 +116,8 @@
 		return $arrayProvincias;
 	}
 
+/*AÑADIDO INSERTAR PROVINCIA EN BASE DE DATOS*/
+
 	// Función insertar provincia en la base de datos
 	function insertarProvincia($nombre) {
 		
