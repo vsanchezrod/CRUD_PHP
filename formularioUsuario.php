@@ -124,7 +124,7 @@ Se crea formulario completo que se usa para insertar usuarios o actualizar datos
 		<input name="fecha" type="date" min="1900-01-01" value="<?php if(!empty($usuario[0]->FechaNacimiento)) {echo $usuario[0]->FechaNacimiento;} ?>">
 
 	</div>
-
+	
 	<div class="row">
 		
 		<label for="direccion">DIRECCIÓN</label>
@@ -149,17 +149,20 @@ Se crea formulario completo que se usa para insertar usuarios o actualizar datos
 				// Se guarda en una variable la provincia en el caso de que se le esté pasando un usuario
 				$provinciaUsuario = $usuario[0]->Provincia;
 
-				// Se recorre con un bucle FOR todos los valores del array para crear los distintos opctiones del select
+				include 'consultas.php';
+				$arrayProvincias = seleccionarProvincias();
+							
+				// Se recorre con un bucle FOR todos los objetos del array y acceder a su propiedad nombre y crear los distintos opctiones del select
 				for($i = 0; $i < count($arrayProvincias); $i++) { 
 
 					// Si el valor es igual a la variable creada se le añade el atributo de SELECTED
-					if ($arrayProvincias[$i] == $provinciaUsuario){ ?> 
-						<option selected="selected" value="<?= $arrayProvincias[$i] ?>"> <?= $arrayProvincias[$i] ?> </option> 
+					if ($arrayProvincias[$i]->Nombre == $provinciaUsuario){ ?> 
+						<option selected="selected" value="<?= $arrayProvincias[$i]->Nombre ?>"> <?= $arrayProvincias[$i]->Nombre ?> </option> 
 					<?php }
 
 					// Si no, se crea el option si el atributo SELECTED
 					else{ ?>
-						<option value="<?= $arrayProvincias[$i] ?>"> <?= $arrayProvincias[$i] ?> </option> 
+						<option value="<?= $arrayProvincias[$i]->Nombre ?>"> <?= $arrayProvincias[$i]->Nombre ?> </option> 
 					<?php }?>
 					
 				<?php }	

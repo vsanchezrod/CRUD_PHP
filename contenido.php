@@ -15,6 +15,9 @@
 		if ($_GET['resultado'] == "usuarioCreado") {
 			echo "<H3 class='fade'>Usuario Creado</H3></br>";
 		}
+		if ($_GET['resultado'] == "provinciaInsertada") {
+			echo "<H3 class='fade'>Provincia Creada</H3></br>";
+		}
 	}
 
 	/*NUEVO LOGOUT*/

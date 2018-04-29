@@ -6,7 +6,6 @@
 	include 'contenido.php';
 	include 'conexion.php';
 	
-
 	// PRUEBA PARA VER LAS SESIONES (BORRAR)
 	if(!isset($_SESSION['usuario'])){
 		echo "No hay session";

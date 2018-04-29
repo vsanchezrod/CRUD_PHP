@@ -94,6 +94,42 @@
 		return $encontrado = count($registro);
 	}
 
+
+
+/*AÑADIDO SELECCIONAR PROVINCIAS*/
+
+	// Función que seleciona los nombres de las provincias existentes en la base de datos y devuelve el resultado en un array
+	function seleccionarProvincias(){
+
+		// Se incluye el archivo php que se encarga de la conexión a la BBDD
+		include 'conexion.php';
+			
+		// Se crea la query para consultar el nombre de las provincias
+		$query = "SELECT Nombre FROM provincias";
+		
+		// Dentro de la variable $resultado se obtiene un resulset con lo registros almacenados
+		$resultado = $conexion->query($query);
+		
+		// Almacenamos el resultado en un array de objetos 
+		$arrayProvincias = $resultado->fetchAll (PDO::FETCH_OBJ);
+
+		return $arrayProvincias;
+	}
+
+	// Función insertar provincia en la base de datos
+	function insertarProvincia($nombre) {
+		
+		// Se establece conexión con la base de datos
+		include 'conexion.php';
+
+		// Se crea query de INSERT
+		$query = "INSERT INTO provincias (Nombre) VALUES ('$nombre')";
+		$resultado = $conexion->query($query);
+				
+		// Se cierra la conexión
+		$conexion = null;
+	}
+
 ?>
 
 

@@ -8,9 +8,21 @@
 		header ("Location: login.php");
 	}
 
+	// Opción de insertar provincia en la base de datos
+	if(!empty($_GET['opcion']) && $_GET['opcion'] == 'insertarProvincia'){
+
+		// Se guarda en una variable el nombre de la provincia
+		$nombre = $_POST['nombre'];
+		include 'consultas.php';
+		insertarProvincia($nombre);
+		
+		// Redirección al index.php pasándole el resultado de provincia creada
+		header("Location: index.php?resultado=provinciaInsertada");
+	}
+
 ?>
 
-<form class="formulario" id="formularioProvincia" action="index.php" method="post">
+<form class="formulario" id="formularioProvincia" action="formularioProvincias.php?opcion=insertarProvincia" method="POST">
 	
 	<div class="row">
 		<label for="id"></label>
@@ -20,7 +32,7 @@
 
 	<div class="row">
 		<label for="nombre">NOMBRE PROVINCIA</label>
-		<input name="nombre" type="text" value="">
+		<input required name="nombre" type="text" value="">
 	</div>
 
 	<div class="row">
