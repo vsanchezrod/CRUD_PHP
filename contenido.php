@@ -205,8 +205,8 @@
 
 <div id="paginacion">
 	
-	<img src="images/backward2.png" alt="Anterior"> 
-	
+	<a href="index.php?pagina=<?php	if ($pagina != 1) {echo $pagina-1;} else {echo '1';}?>"><img src="images/backward2.png" alt="Anterior"></a>
+
 	<?php 
 
 	// NUEVO---------------------- PAGINACIÓN ------------------------------------
@@ -221,6 +221,7 @@
 
 	?>
 	
-	<img src="images/forward3.png" alt="Anterior">
+	<a href="index.php?pagina=<?php	if ($pagina != $numeroPaginas) {echo $pagina+1;} else {echo $numeroPaginas;}  ?>"><img src="images/forward3.png" alt="Posterior"></a>
+
 
 </div>

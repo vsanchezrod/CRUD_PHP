@@ -142,7 +142,7 @@ td input:hover {
 	font-size: 25px;
 }
 
-#paginacion img {
+#paginacion a img {
 	width: 7%;
 	height: 7%;
 }

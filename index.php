@@ -7,12 +7,10 @@
 	include 'conexion.php';
 	
 	// PRUEBA PARA VER LAS SESIONES (BORRAR)
-	if(!isset($_SESSION['usuario'])){
-		echo "No hay session";
-	}
-	else {
+	if(isset($_SESSION['usuario'])){
 		echo "Usuario de session: " . $_SESSION['usuario'];
 	}
+	
 	include 'pie.php';
 
 ?>
