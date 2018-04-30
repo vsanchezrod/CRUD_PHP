@@ -79,7 +79,7 @@
 
 	}
 
-/*AÑADIDO NUEVO LOGIN*/
+	/*AÑADIDO NUEVO LOGIN*/
 
 	// Función que comprueba si existe un usuario en la base de datos
 	function comprobarUsuario($email, $contrasena){

@@ -22,12 +22,6 @@
 
 		echo "<h3>Creación de usuario</h3>";
 	}
-
-	// Opción de CrearIncorrecto (carga el formulario vacío)
-	/*if(!empty($_GET['opcion']) && $_GET['opcion'] == 'crearIncorrecto'){
-
-		echo "<h3>ERROR: Email ya existente!</h3>";
-	}*/
 	
 	// Opción de insertar (inserta o modifica el usuario en la base de datos)
 	if(!empty($_GET['opcion']) && $_GET['opcion'] == 'insertar'){
@@ -61,8 +55,6 @@
 				header("Location: index.php?resultado=usuarioCreado");
 			}
 			else {
-				// Se redirige al login de nuevo
-				//header("Location: formularioUsuario.php?opcion=crearIncorrecto");
 				echo "<h3>ERROR: Email ya existente!</h3>";
 			}
 		}
@@ -88,7 +80,6 @@
 <!-- FORMULARIO  HTML
 Se crea formulario completo que se usa para insertar usuarios o actualizar datos de un usuario existente-->
 
-
 <form class="formulario" action="formularioUsuario.php?opcion=insertar" method="post">
 	
 	<!-- En cada input de formulario se controla si se le está pasando un usuario o no para mostrar datos -->
@@ -98,7 +89,6 @@ Se crea formulario completo que se usa para insertar usuarios o actualizar datos
 		<input name="id" type="hidden" value="<?php if(!empty($usuario[0]->Id)) {echo $usuario[0]->Id;} ?>">
 
 	</div>
-
 
 	<div class="row">
 		
@@ -134,7 +124,8 @@ Se crea formulario completo que se usa para insertar usuarios o actualizar datos
 
 	</div>
 	
-	<div class="row">
+	<div 		// Se redirige al login de nuevo
+				//header("Location: formularioUsuario.php?opcion=crearIncorrecto");class="row">
 		
 		<label for="direccion">DIRECCIÓN</label>
 		<input name="direccion" type="text" value="<?php if(!empty($usuario[0]->Direccion)) {echo $usuario[0]->Direccion;} ?>">

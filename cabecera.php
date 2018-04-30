@@ -25,8 +25,6 @@
 						
 				// Si se encuentra usuario registrado
 				if ($usuario != 0) {
-					// Se inicia sesión con session_start()
-					//session_start();
 					// Se almacena en la variable superglobal el email del usuario
 					$_SESSION['usuario'] = $_POST['emailLogin'];
 				}

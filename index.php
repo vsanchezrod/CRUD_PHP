@@ -1,4 +1,3 @@
-<!-- Se incluye la cabecera.php-->
 <?php
 		
 	// Se incluyen los archivos php

@@ -57,16 +57,10 @@
 
 	// Se crea la query para consultar todos los usuarios de la tabla
 	$query = "SELECT * FROM usuarios";
-
-
-
-	/*-----------------------------------NUEVO---------------------------------------------*/
-
 	/*Es necesario saber cuantos registro totales se tienen, y en cuantas páginas se van a dividir los registros*/
-
+	
 	// Variable que le dice al programa cuantos registros habrá por página
 	$registrosPorPagina = 10;
-
 
 	/* Si la variable pagina está seteada, es decir, se está usando la paginación porque le llega por URL
 	el valor de la variable pagina, entonces vamos a ver que página es*/
@@ -100,37 +94,16 @@
 
 	$primerRegistro = ($pagina-1)*$registrosPorPagina;
 
-	/*--------------------------------FIN NUEVO---------------------------------------------*/
-
-
-
-
-
-
 	// Dentro de la variable $resultado se obtiene un resulset con lo registros almacenados
 	$resultado = $conexion->query($query);
 
 	// Almacenamos el resultado en un array de objetos 
 	$registros = $resultado->fetchAll (PDO::FETCH_OBJ);
 
-
-
-
-
-
-	/*-----------------------------------NUEVO---------------------------------------------*/
-
 	// Ejecutamos la funcion count() de los arrays para saber el nº de registros totales y se almacena en una variable
 	$numeroRegistros = count($registros);
 	// Se calcula el nº de páginas que tendrá la paginación, usando la función ceil que redondea el resultado hacia arriba
 	$numeroPaginas = ceil($numeroRegistros/$registrosPorPagina);
-
-	/*echo "Número de registros por columna: " . $registrosPorPagina ."<br>";
-	echo "Número de registros totales: " . $numeroRegistros ."<br>";
-	echo "Número de páginas disponibles: " . $numeroPaginas ."<br>";
-	echo "Pagina a mostrar: " . $pagina ."<br>";*/
-
-
 
 	/************ AHORA. Añadimos a query el LIMIT que puede recibir dos parámetros*************
 	1.Cual es el primer registro que quieres ver y 2. Cuantos registros a partir del primero quieres ver*/
@@ -143,14 +116,8 @@
 	$registrosLimite = $resultadoLimite->fetchAll (PDO::FETCH_OBJ);
 
 
-	/*--------------------------------FIN NUEVO---------------------------------------------*/
-
-
-
-
 	/* Se va a utilizar un bucle foreach para recorrer cada uno de los objetos contenidos en el array
 	- Se va a crear una nueva fila en la tabla por cada usuario*/
-
 
 	/*NUEVO HE CAMBIADO EL ARRAY PARA MOSTRAR*/
 	foreach($registrosLimite as $usuario): 
