@@ -4,7 +4,7 @@
 	try{
 
 		// Creamos la conexión con PDO
-		$conexion = new PDO('mysql:host=localhost; dbname=M07', 'root', '');
+		$conexion = new PDO('mysql:host=localhost;dbname=M07;charset=utf8','root', '');
 		
 		// Para gestionar las excepciones
 		$conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
