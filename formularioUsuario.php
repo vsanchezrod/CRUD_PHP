@@ -3,7 +3,7 @@
 	//Se incluye la cabecera.php	
 	include 'cabecera.php';
 	include 'consultas.php';
-
+	
 	// NUEVO - Si no hay sesion iniciada se redirige al index
 	if(!isset($_SESSION['usuario'])){
 		header ("Location: login.php");
@@ -22,6 +22,12 @@
 
 		echo "<h3>Creación de usuario</h3>";
 	}
+
+	// Opción de CrearIncorrecto (carga el formulario vacío)
+	/*if(!empty($_GET['opcion']) && $_GET['opcion'] == 'crearIncorrecto'){
+
+		echo "<h3>ERROR: Email ya existente!</h3>";
+	}*/
 	
 	// Opción de insertar (inserta o modifica el usuario en la base de datos)
 	if(!empty($_GET['opcion']) && $_GET['opcion'] == 'insertar'){
@@ -49,20 +55,32 @@
 
 		// Si NO se ha recibido un id entonces se llama a la funcion INSERTAR
 		else {
-			insertar($nombre, $contrasena, $email, $edad, $fecha, $direccion, $codigoPostal, $provincia, $genero);
 
-			// Redirección al index.php pasándole el resultado de usuario creado
-			header("Location: index.php?resultado=usuarioCreado");
+			if(insertar($nombre, $contrasena, $email, $edad, $fecha, $direccion, $codigoPostal, $provincia, $genero)) {
+				// Redirección al index.php pasándole el resultado de usuario creado
+				header("Location: index.php?resultado=usuarioCreado");
+			}
+			else {
+				// Se redirige al login de nuevo
+				//header("Location: formularioUsuario.php?opcion=crearIncorrecto");
+				echo "<h3>ERROR: Email ya existente!</h3>";
+			}
 		}
 	}
 
 	// Opción de borrar (borra el usuario)
 	if(!empty($_GET['opcion']) && $_GET['opcion'] == 'borrar'){
-
-		borrar($_POST['id']);
-
-		// Redirección al index.php pasándole el resultado de usuario borrado
-		header("Location: index.php?resultado=usuarioBorrado");
+		
+		$usuarioABorrar = seleccionarUsuario($_POST['id']);
+	
+		if ($usuarioABorrar[0]->Email != $_SESSION['usuario']){
+			borrar($_POST['id']);
+			// Redirección al index.php pasándole el resultado de usuario borrado
+			header("Location: index.php?resultado=usuarioBorrado");
+		}
+		else {
+			header("Location: index.php?resultado=falloBorrar");
+		}
 	}
 	
 ?>
@@ -181,7 +199,7 @@ Se crea formulario completo que se usa para insertar usuarios o actualizar datos
 
 			// Si el género está vació no se marca ninguna opción
 			else {
-				echo "<input name='genero' type='radio' value='Hombre'> Hombre";
+				echo "<input required name='genero' type='radio' value='Hombre'> Hombre";
 				echo "<input name='genero' type='radio' value='Mujer'> Mujer";
 			}
 

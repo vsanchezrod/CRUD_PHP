@@ -48,9 +48,16 @@
 
 		// Se crea query de INSERT
 		$query = "INSERT INTO usuarios (Nombre, Contrasena, Email, Edad, FechaNacimiento, Direccion, CodigoPostal, Provincia, Genero) VALUES ('$nombre', '$contrasena', '$email', '$edad', '$fecha', '$direccion', '$codigoPostal', '$provincia', '$genero')";
-		
-		$resultado = $conexion->query($query);
-				
+
+		try {
+			$conexion->query($query);
+			return true;
+		}
+		catch (PDOException $exception) {
+			
+			return false; 
+		}
+						
 		// Se cierra la conexión
 		$conexion = null;
 	}
@@ -149,6 +156,7 @@
 				
 		// Se cierra la conexión
 		$conexion = null;
+	
 	}
 
 ?>

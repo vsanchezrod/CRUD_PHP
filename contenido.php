@@ -18,6 +18,9 @@
 		if ($_GET['resultado'] == "provinciaInsertada") {
 			echo "<H3 class='fade'>Provincia Creada</H3></br>";
 		}
+		if ($_GET['resultado'] == "falloBorrar") {
+			echo "<H3 class='fade'>No puede borrar SU usuario!</H3></br>";
+		}
 	}
 
 	/*NUEVO LOGOUT*/
