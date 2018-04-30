@@ -2,6 +2,7 @@
 
 	//Se incluye la cabecera.php	
 	include 'cabecera.php';
+	include 'consultas.php';
 
 	// NUEVO - Si no hay sessio iniciada se redirige al index
 	if(!isset($_SESSION['usuario'])){
@@ -13,7 +14,6 @@
 	if(!empty($_GET['opcion']) && $_GET['opcion'] == 'actualizar'){
 
 		echo "<h3>Actualización de usuario</h3>";
-		include 'consultas.php';
 		$usuario = seleccionarUsuario($_POST['id']);
 	}
 
@@ -59,20 +59,11 @@
 	// Opción de borrar (borra el usuario)
 	if(!empty($_GET['opcion']) && $_GET['opcion'] == 'borrar'){
 
-		include 'consultas.php';
 		borrar($_POST['id']);
 
 		// Redirección al index.php pasándole el resultado de usuario borrado
 		header("Location: index.php?resultado=usuarioBorrado");
 	}
-
-	//BORRAR!!!!!!
-	/*// Creación de un array con todas las provincias españolas
-	$arrayProvincias = ['Alava','Albacete','Alicante','Almería','Asturias','Avila','Badajoz','Barcelona','Burgos','Cáceres',
-	'Cádiz','Cantabria','Castellón','Ceuta','Ciudad Real','Córdoba','La Coruña','Cuenca','Gerona','Granada','Guadalajara',
-	'Guipúzcoa','Huelva','Huesca','Islas Baleares','Jaén','León','Lérida','Lugo','Madrid','Málaga','Melilla','Murcia','Navarra',
-	'Orense','Palencia','Las Palmas','Pontevedra','La Rioja','Salamanca','Segovia','Sevilla','Soria','Tarragona',
-	'Santa Cruz de Tenerife','Teruel','Toledo','Valencia','Valladolid','Vizcaya','Zamora','Zaragoza'];*/
 	
 ?>
 
