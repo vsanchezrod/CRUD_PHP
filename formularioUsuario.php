@@ -4,7 +4,7 @@
 	include 'cabecera.php';
 	include 'consultas.php';
 
-	// NUEVO - Si no hay sessio iniciada se redirige al index
+	// NUEVO - Si no hay sesion iniciada se redirige al index
 	if(!isset($_SESSION['usuario'])){
 		header ("Location: login.php");
 	}

@@ -10,7 +10,7 @@
 	
 		<div class="row">
 			<label for="email">EMAIL</label>
-			<input name="email" type="email" value="">
+			<input name="emailLogin" type="email" value="">
 		</div>
 
 

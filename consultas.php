@@ -21,7 +21,7 @@
 	// Función seleccionar un usuario de la base de datos
 	function seleccionarUsuario($usuarioId){
 		
-	// Se establece conexión con la base de datos
+		// Se establece conexión con la base de datos
 		include 'conexion.php';
 		
 		// Se crea la query de SELECT
@@ -91,12 +91,16 @@
 
 		// Se utiliza la funcion count() para ver cuantos elementos tiene el array
 		/*Si el valor es 0, no existe ese usuario, si es 1 si existe*/
+
+		if (count($registro) != 0 ) {
+			$id = $registro[0]->Id;
+			insertarAcceso($id);
+		}
+		
 		return $encontrado = count($registro);
 	}
 
-
-
-/*AÑADIDO SELECCIONAR PROVINCIAS*/
+	/*AÑADIDO SELECCIONAR PROVINCIAS*/
 
 	// Función que seleciona los nombres de las provincias existentes en la base de datos y devuelve el resultado en un array
 	function seleccionarProvincias(){
@@ -126,6 +130,21 @@
 
 		// Se crea query de INSERT
 		$query = "INSERT INTO provincias (Nombre) VALUES ('$nombre')";
+		$resultado = $conexion->query($query);
+				
+		// Se cierra la conexión
+		$conexion = null;
+	}
+
+
+/*AÑADIDO REGISTRAR INICIO DE SESIÓN DEL USUARIO EN LA BASE DE DATOS*/
+
+	// Función que registrar los accesos de los usuarios a la base de datos
+	function insertarAcceso($id){
+		
+		// Se establece conexión con la base de datos
+		include 'conexion.php';
+		$query = "INSERT INTO registroEntrada (IdUsuario) VALUES ($id)";
 		$resultado = $conexion->query($query);
 				
 		// Se cierra la conexión
