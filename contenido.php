@@ -23,7 +23,6 @@
 		}
 	}
 
-	/*NUEVO LOGOUT*/
 	if(isset($_GET['logout'])){
 		if ($_GET['logout'] == "1") {
 			session_start();
@@ -32,6 +31,24 @@
 		}
 	}
 
+	/*NUEVO GENERACIÓN DE ARCHIVOS XML Y TXT*/
+	if (!empty ($_GET['archivo'])) {
+
+		include 'consultas.php';
+		if ($_GET['archivo'] == "xml") {
+			echo "<H3 class='fade'>Archivo XML generado</H3></br>";
+			crearXML();
+		}
+
+		if ($_GET['archivo'] == "txt") {
+			echo "<H3 class='fade'>Archivo TXT generado</H3></br>";
+			crearTXT();
+		}
+	}
+
+
+
+	
 ?>
 
 <!-- Se crea una tabla con sus cabeceras, donde se mostrarán los usuarios de la BBDD-->

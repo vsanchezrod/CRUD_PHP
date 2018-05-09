@@ -79,8 +79,6 @@
 
 	}
 
-	/*AÑADIDO NUEVO LOGIN*/
-
 	// Función que comprueba si existe un usuario en la base de datos
 	function comprobarUsuario($email, $contrasena){
 
@@ -107,8 +105,6 @@
 		return $encontrado = count($registro);
 	}
 
-	/*AÑADIDO SELECCIONAR PROVINCIAS*/
-
 	// Función que seleciona los nombres de las provincias existentes en la base de datos y devuelve el resultado en un array
 	function seleccionarProvincias(){
 
@@ -127,8 +123,6 @@
 		return $arrayProvincias;
 	}
 
-/*AÑADIDO INSERTAR PROVINCIA EN BASE DE DATOS*/
-
 	// Función insertar provincia en la base de datos
 	function insertarProvincia($nombre) {
 		
@@ -143,9 +137,6 @@
 		$conexion = null;
 	}
 
-
-/*AÑADIDO REGISTRAR INICIO DE SESIÓN DEL USUARIO EN LA BASE DE DATOS*/
-
 	// Función que registrar los accesos de los usuarios a la base de datos
 	function insertarAcceso($id){
 		
@@ -159,7 +150,114 @@
 	
 	}
 
+
+/*AÑADIDO - FUNCIÓN SELECCIONAR TODOS LOS USUARIOS*/
+
+	// Función que va a seleccionar TODOS los usuarios de la base de datos
+	function seleccionarUsuarios(){
+		// Se establece conexión con la base de datos
+		include 'conexion.php';
+
+		// Se crea la query para consultar todos los usuarios de la tabla
+		$query = "SELECT * FROM usuarios";
+
+		// Dentro de la variable $resultado se obtiene un resulset con lo registros almacenados
+		$resultado = $conexion->query($query);
+
+		// Almacenamos el resultado en un array de objetos 
+		$registros = $resultado->fetchAll (PDO::FETCH_OBJ);
+
+		return $registros;
+	}
+
+/*AÑADIDO - FUNCIÓN QUE CREA EL XML*/
+
+	// Función crear XML
+	function crearXML(){
+
+		$xml = new DomDocument('1.0', 'UTF-8');
+	
+		$usuarios = $xml->createElement('usuarios');
+		$usuarios = $xml->appendChild($usuarios);
+	
+		$registros = seleccionarUsuarios();
+
+		for ($i = 0; $i < count($registros); $i++){
+			
+			$usuario = $xml->createElement('usuario');
+			$usuario = $usuarios->appendChild($usuario);
+
+			$id = $xml->createElement('id', $registros[$i]->Id);
+			$id = $usuario->appendChild($id);
+
+			$nombre = $xml->createElement('nombre', $registros[$i]->Nombre);
+			$nombre = $usuario->appendChild($nombre);
+
+			$contrasena = $xml->createElement('contrasena', $registros[$i]->Contrasena);
+			$contrasena = $usuario->appendChild($contrasena);
+
+			$email = $xml->createElement('email', $registros[$i]->Email);
+			$email = $usuario->appendChild($email);
+
+			$edad = $xml->createElement('edad', $registros[$i]->Edad);
+			$edad = $usuario->appendChild($edad);
+
+			$fechaNac = $xml->createElement('fechaNacimiento', $registros[$i]->FechaNacimiento);
+			$fechaNac = $usuario->appendChild($fechaNac);
+
+			$direccion = $xml->createElement('direccion', $registros[$i]->Direccion);
+			$direccion = $usuario->appendChild($direccion);
+
+			$codPostal = $xml->createElement('codigoPostal', $registros[$i]->CodigoPostal);
+			$codPostal = $usuario->appendChild($codPostal);
+
+			$provincia = $xml->createElement('provincia', $registros[$i]->Provincia);
+			$provincia = $usuario->appendChild($provincia);
+
+			$genero = $xml->createElement('genero', $registros[$i]->Genero);
+			$genero = $usuario->appendChild($genero);
+		}
+
+		$xml->formatOutput = true;
+		$el_xml = $xml->saveXML();
+		$xml->save('usuarios.xml');
+
+	}
+
+	// Función crear TXT
+	function crearTXT(){
+
+		// Con la funcion fopen se crea el archivo, y con "w+" se sobreescribe en el caso de que ya exista
+		$fichero = fopen("usuarios.txt", "w+");
+
+		// Con la función date() se guarda la fecha en una variable
+		$fecha = date("D d/m/Y");
+		$hora = date("G:i:s");
+		 
+		// Añadimmos las siguientes líneas como cabecera del documento txt
+		fwrite($fichero, "USUARIOS REGISTRADOS\n");
+		fwrite($fichero, "Fecha de Edición de archivo: " . $fecha . "\n");
+		fwrite($fichero, "Hora de edición: " . $hora . "\n");
+		fwrite($fichero, "________________________________________________________\n");
+ 
+		// Se guarda en un variable el resultado de la query SELECT de los usuarios de la tabla usuarios
+		$usuarios = seleccionarUsuarios();
+ 		// Se recorren los distintos usuarios con FOREACH y se escribe su información en el archivo creado
+		foreach ($usuarios as $usuario){
+ 
+			fwrite($fichero, "\nUsuario:\n");
+			fwrite($fichero, "\tEmail: " . $usuario->Email . "\n");
+			fwrite($fichero, "\tFecha de Nacimiento: " . $usuario->FechaNacimiento . "\n");
+			fwrite($fichero, "________________________________________________________\n");
+		}
+ 
+		// Se cierra el fichero
+		 fclose($fichero);
+		 
+	 }
 ?>
+
+
 
 
 

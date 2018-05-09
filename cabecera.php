@@ -40,8 +40,6 @@
 		<h1 class="titulo">PHP - MYSQL </h1>
 		<div id="menu">
 			<ul>
-				
-				<!-- NUEVO  -->
 				<?php 
 
 					// Si NO hay session abierta del usuario:
@@ -59,10 +57,13 @@
 						<li><a href="index.php">INICIO</a></li>
 						<li><a href="formularioUsuario.php?opcion=crear">CREAR USUARIO</a></li>
 						<li><a href="formularioProvincias.php">CREAR PROVINCIA</a></li>
-					<?php }
-
+					<?php } 
 				?>
-				
+
+				<!--NUEVOS ENLACES AÑADIDOS EN MENU -->
+				<li><a class="ficheros" href="index.php?archivo=xml">CREAR XML</a></li>
+				<li><a class="ficheros"href="index.php?archivo=txt">CREAR TXT</a></li>
+
 			</ul>
 
 		</div>
