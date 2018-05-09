@@ -1,0 +1,114 @@
+USUARIOS REGISTRADOS
+Fecha de Edición de archivo: Wed 09/05/2018
+Hora de edición: 19:57:19
+________________________________________________________
+
+Usuario:
+	Email: sergio@php.es
+	Fecha de Nacimiento: 1989-05-25
+________________________________________________________
+
+Usuario:
+	Email: juan@yahoo.es
+	Fecha de Nacimiento: 1985-12-02
+________________________________________________________
+
+Usuario:
+	Email: vir@query.es
+	Fecha de Nacimiento: 1956-12-02
+________________________________________________________
+
+Usuario:
+	Email: manoli@asdad
+	Fecha de Nacimiento: 1950-04-05
+________________________________________________________
+
+Usuario:
+	Email: lolo@lolo.es
+	Fecha de Nacimiento: 1980-02-08
+________________________________________________________
+
+Usuario:
+	Email: vero@ilerna.es
+	Fecha de Nacimiento: 1973-04-05
+________________________________________________________
+
+Usuario:
+	Email: carlos@lopez.es
+	Fecha de Nacimiento: 1985-12-01
+________________________________________________________
+
+Usuario:
+	Email: paco@ibm.es
+	Fecha de Nacimiento: 1990-12-02
+________________________________________________________
+
+Usuario:
+	Email: pepa@gomez.php.es
+	Fecha de Nacimiento: 1980-12-02
+________________________________________________________
+
+Usuario:
+	Email: margarita@ibm.es
+	Fecha de Nacimiento: 1996-06-15
+________________________________________________________
+
+Usuario:
+	Email: sara12@gmail.com
+	Fecha de Nacimiento: 1998-02-01
+________________________________________________________
+
+Usuario:
+	Email: pepito@gmail.com
+	Fecha de Nacimiento: 1995-05-03
+________________________________________________________
+
+Usuario:
+	Email: bango@hotmail.com
+	Fecha de Nacimiento: 2013-06-05
+________________________________________________________
+
+Usuario:
+	Email: fer@fer.es
+	Fecha de Nacimiento: 1968-10-13
+________________________________________________________
+
+Usuario:
+	Email: lara@telefonica.es
+	Fecha de Nacimiento: 1988-10-14
+________________________________________________________
+
+Usuario:
+	Email: usuarioleo@ilerna.es
+	Fecha de Nacimiento: 1998-07-08
+________________________________________________________
+
+Usuario:
+	Email: adminVir@admin.com
+	Fecha de Nacimiento: 1986-01-14
+________________________________________________________
+
+Usuario:
+	Email: vir2@query.es
+	Fecha de Nacimiento: 1983-12-05
+________________________________________________________
+
+Usuario:
+	Email: informatico@empresa.es
+	Fecha de Nacimiento: 1968-01-01
+________________________________________________________
+
+Usuario:
+	Email: bango@perro.es
+	Fecha de Nacimiento: 2012-05-06
+________________________________________________________
+
+Usuario:
+	Email: alonso@ferrari.es
+	Fecha de Nacimiento: 1980-02-04
+________________________________________________________
+
+Usuario:
+	Email: admininfo@info
+	Fecha de Nacimiento: 1988-02-19
+________________________________________________________

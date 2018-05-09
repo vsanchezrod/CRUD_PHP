@@ -179,6 +179,8 @@
 	
 		$usuarios = $xml->createElement('usuarios');
 		$usuarios = $xml->appendChild($usuarios);
+		$usuarios->setAttribute("fecha", date("D d/m/Y"));
+		$usuarios->setAttribute("hora", date("G:i:s"));
 	
 		$registros = seleccionarUsuarios();
 
@@ -217,18 +219,17 @@
 			$genero = $xml->createElement('genero', $registros[$i]->Genero);
 			$genero = $usuario->appendChild($genero);
 		}
-
-		$xml->formatOutput = true;
-		$el_xml = $xml->saveXML();
-		$xml->save('usuarios.xml');
-
+		$xml->save('xml/usuarios.xml');
 	}
+
+
+/*AÑADIDO - FUNCIÓN QUE CREA EL XML*/
 
 	// Función crear TXT
 	function crearTXT(){
 
 		// Con la funcion fopen se crea el archivo, y con "w+" se sobreescribe en el caso de que ya exista
-		$fichero = fopen("usuarios.txt", "w+");
+		$fichero = fopen("txt/usuarios.txt", "w+");
 
 		// Con la función date() se guarda la fecha en una variable
 		$fecha = date("D d/m/Y");
@@ -252,7 +253,7 @@
 		}
  
 		// Se cierra el fichero
-		 fclose($fichero);
+		fclose($fichero);
 		 
 	 }
 ?>

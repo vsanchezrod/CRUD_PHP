@@ -36,19 +36,15 @@
 
 		include 'consultas.php';
 		if ($_GET['archivo'] == "xml") {
-			echo "<H3 class='fade'>Archivo XML generado</H3></br>";
 			crearXML();
+			echo "<H3 class='fade'>Archivo XML generado. <a href='xml/usuarios.xml' download> Descargar!</a></H3></br>";
 		}
 
 		if ($_GET['archivo'] == "txt") {
-			echo "<H3 class='fade'>Archivo TXT generado</H3></br>";
 			crearTXT();
+			echo "<H3 class='fade'>Archivo txt generado. <a href='txt/usuarios.txt' download> Descargar!</a></H3></br>";
 		}
 	}
-
-
-
-	
 ?>
 
 <!-- Se crea una tabla con sus cabeceras, donde se mostrarán los usuarios de la BBDD-->

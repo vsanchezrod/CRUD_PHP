@@ -101,6 +101,12 @@ h3 {
 	}
 }
 
+h3 a{
+	color: rgb(104, 219, 235);
+	font-size: 20px;
+}
+
+
 table {
 	background: #F7E5FB;
 	border: 2px solid black;
