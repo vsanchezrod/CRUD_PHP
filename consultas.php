@@ -167,6 +167,9 @@
 		// Almacenamos el resultado en un array de objetos 
 		$registros = $resultado->fetchAll (PDO::FETCH_OBJ);
 
+		// Se cierra la conexión
+		$conexion = null;
+		
 		return $registros;
 	}
 
