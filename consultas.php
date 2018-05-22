@@ -267,6 +267,28 @@
 
 	 }
 
+/*AÑADIDO NUEVO PARA LA PAC*/
+
+	 // Función que busca las imágenes en la BD para el slider
+	 function rescatarImgBBDD(){
+		 // Se establece conexión con la base de datos
+		include 'conexion.php';
+
+		// Se crea la query para consultar todas las imágenes de la tabla fotos
+		$query = "SELECT * FROM fotos";
+
+		// Dentro de la variable $resultado se obtiene un resulset con lo registros almacenados
+		$resultado = $conexion->query($query);
+
+		// Almacenamos el resultado en un array de objetos que contienen las imágenes
+		$registros = $resultado->fetchAll (PDO::FETCH_OBJ);
+
+		// Se cierra la conexión
+		$conexion = null;
+		
+		return $registros;
+	 }
+
 
 
 
