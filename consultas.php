@@ -150,9 +150,6 @@
 	
 	}
 
-
-/*AÑADIDO - FUNCIÓN SELECCIONAR TODOS LOS USUARIOS*/
-
 	// Función que va a seleccionar TODOS los usuarios de la base de datos
 	function seleccionarUsuarios(){
 		// Se establece conexión con la base de datos
@@ -172,8 +169,6 @@
 		
 		return $registros;
 	}
-
-/*AÑADIDO - FUNCIÓN QUE CREA EL XML*/
 
 	// Función crear XML
 	function crearXML(){
@@ -225,9 +220,6 @@
 		$xml->save('xml/usuarios.xml');
 	}
 
-
-/*AÑADIDO - FUNCIÓN QUE CREA EL XML*/
-
 	// Función crear TXT
 	function crearTXT(){
 
@@ -259,6 +251,25 @@
 		fclose($fichero);
 		 
 	 }
+
+/*AÑADIDO NUEVO PARA LA PAC*/
+
+	 // Función que guarda la ruta de la imagen en la base de datos
+	 function guardarImgBBDD($nombreImg){
+
+		// Se establece conexión con la base de datos
+		include 'conexion.php';
+		$query = "INSERT INTO fotos (rutaFoto) VALUES ('$nombreImg')";
+		$resultado = $conexion->query($query);
+				
+		// Se cierra la conexión
+		$conexion = null;
+
+	 }
+
+
+
+
 ?>
 
 
