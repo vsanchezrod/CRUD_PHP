@@ -255,11 +255,28 @@
 /*AÑADIDO NUEVO PARA LA PAC*/
 
 	 // Función que guarda la ruta de la imagen en la base de datos
-	 function guardarImgBBDD($nombreImg){
+	 function guardarImgBBDD($ruta, $nombreImg, $tipoImg, $tamanoImg){
 
 		// Se establece conexión con la base de datos
 		include 'conexion.php';
-		$query = "INSERT INTO fotos (rutaFoto) VALUES ('$nombreImg')";
+
+		// Hay que apuntar al archivo con la función fopen para convertirlo a bytes (leer los bytes)
+		/* fopen(ruta, permiso) -- Permiso r - solo lectura*/
+		$archivo_imagen = fopen($ruta . $nombreImg, "r");
+
+		// Se leen los bytes que forman parte de ese archivo
+		$contenido = fread($archivo_imagen, $tamanoImg);
+
+		// Es necesario escapar los / de la ruta ya que php no los interpreta
+		// Almacena la ruta pero con las / escapadas para que php las interprete
+		$contenido = addslashes($contenido);
+
+		// Cerramos el flujo de datos
+		fclose($archivo_imagen);
+
+		//$query = "INSERT INTO imageertnes (nombre, tipo, contenido) VALUES ('$nombreImg', '$tipoImg', '$contenido')";
+		
+		$query = "INSERT INTO imagenes (nombre, tipo, contenido) VALUES ('hola', 'imagen', '4544564')";
 		$resultado = $conexion->query($query);
 				
 		// Se cierra la conexión

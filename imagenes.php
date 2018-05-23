@@ -8,6 +8,7 @@
     $carpetaTemporal = $_FILES['imagen']['tmp_name'];
 
     // Control del tamaño de la imagen - Se pone un límite de 2MB
+    // Podría no hacer falta controlar el tamaño, ya que viene delimitado por el tipo de campo elegido, en este caso LONGBLOB
     if($tamanoImg <= 2000000){
 
         if ($tipoImg == "image/jpg" || $tipoImg == "image/jpeg" || $tipoImg == "image/png" || $tipoImg == "image/gif"){
@@ -21,7 +22,7 @@
         move_uploaded_file($carpetaTemporal, $ruta.$nombreImg);
 
         include 'consultas.php';
-        guardarImgBBDD($nombreImg);
+        guardarImgBBDD($ruta, $nombreImg, $tipoImg, $tamanoImg);
 
 
         }
