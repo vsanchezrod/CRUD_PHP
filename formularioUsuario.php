@@ -43,16 +43,16 @@
 		if(!empty($id)){
 			actualizarUsuario($id, $nombre, $contrasena, $email, $edad, $fecha, $direccion, $codigoPostal, $provincia, $genero);
 			
-			// Redirección al index.php pasándole el resultado de usuario actualiado
-			header("Location: index.php?resultado=usuarioActualizado");
+			// Redirección al menuUsuarios.php pasándole el resultado de usuario actualiado
+			header("Location: menuUsuarios.php?resultado=usuarioActualizado");
 		}
 
 		// Si NO se ha recibido un id entonces se llama a la funcion INSERTAR
 		else {
 
 			if(insertar($nombre, $contrasena, $email, $edad, $fecha, $direccion, $codigoPostal, $provincia, $genero)) {
-				// Redirección al index.php pasándole el resultado de usuario creado
-				header("Location: index.php?resultado=usuarioCreado");
+				// Redirección al menuUsuarios.php pasándole el resultado de usuario creado
+				header("Location: menuUsuarios.php?resultado=usuarioCreado");
 			}
 			else {
 				echo "<h3>ERROR: Email ya existente!</h3>";
@@ -67,11 +67,11 @@
 	
 		if ($usuarioABorrar[0]->Email != $_SESSION['usuario']){
 			borrar($_POST['id']);
-			// Redirección al index.php pasándole el resultado de usuario borrado
-			header("Location: index.php?resultado=usuarioBorrado");
+			// Redirección al menuUsuarios.php pasándole el resultado de usuario borrado
+			header("Location: menuUsuarios.php?resultado=usuarioBorrado");
 		}
 		else {
-			header("Location: index.php?resultado=falloBorrar");
+			header("Location: menuUsuarios.php?resultado=falloBorrar");
 		}
 	}
 	

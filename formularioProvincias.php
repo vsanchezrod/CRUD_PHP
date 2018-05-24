@@ -16,8 +16,8 @@
 		include 'consultas.php';
 		insertarProvincia($nombre);
 		
-		// Redirección al index.php pasándole el resultado de provincia creada
-		header("Location: index.php?resultado=provinciaInsertada");
+		// Redirección al menuUsuarios.php pasándole el resultado de provincia creada
+		header("Location: menuUsuarios.php?resultado=provinciaInsertada");
 	}
 
 ?>
