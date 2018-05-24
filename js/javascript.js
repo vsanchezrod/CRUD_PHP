@@ -1,6 +1,5 @@
-function abrirVentana(){
-
-	var nuevaVentana = window.open("login.php", "", "width=500, height=500, left=500px, top=300px, rezisable=no");
-}
-
-
+$(function() {
+	$('#slider div:gt(0)').hide();
+	setInterval(function (){
+		$('#slider div:first-child').fadeOut(1000).next('div').fadeIn(1000).end().appendTo('#slider');}, 5000);
+});

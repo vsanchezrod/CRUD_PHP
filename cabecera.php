@@ -5,8 +5,9 @@
 	<meta charset="UTF-8">
 	<title>UF3 PAC1</title>
 	<link rel="stylesheet" href="css/estilos.css">
+	<script	type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="js/javascript.js"></script>
-		
+			
 </head>
 <body>
 

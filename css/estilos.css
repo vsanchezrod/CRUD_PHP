@@ -50,13 +50,12 @@ header #menu ul li a, header #menu ul button a:visited {
 	margin-left: 100px;
 	font-weight: bolder;
 	text-shadow: 2px 2px #000000;
-	font-size: 30px;
+	font-size: 20px;
 	color: white;
 }
 
 header #menu ul li .ficheros {
 	text-shadow: 2px 2px rgb(5, 47, 139);
-	font-size: 20px;
 }
 
 header #menu ul li .ficheros:hover {
@@ -248,7 +247,7 @@ label {
 }
 
 
-/*Noticias*/
+/*NOTICIAS*/
 h2 {
 	text-align: center;
 	margin-top: 10px;
@@ -260,7 +259,6 @@ h2 {
 #cajaNoticias {
 	width: 90%;
 	margin: 25px 5%;
-	overflow: visible;
 }
 
 .noticia {
@@ -298,6 +296,30 @@ h2 {
 .noticia p {
 	margin: 5px 5% 5px;
 	text-align: justify;
+}
+
+
+/*SLIDER*/
+#slider {
+	position: relative;
+	width: 95%;
+	margin: 20px auto;
+	height: 400px;
+	border: 2px solid black;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+#slider div.elementoSlider {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+}
+
+#slider div.elementoSlider img {
+	width: 100%;
+	height: 400px;
 }
 
 footer {

@@ -278,10 +278,21 @@
 		
 		//$query = "INSERT INTO imagenes (nombre, tipo, contenido) VALUES ('hola', 'imagen', '4544564')";
 		$resultado = $conexion->query($query);
-				
+
+		$filasAfectadas = $resultado->rowCount();
+		header("Location: formularioImagenes.php");
+		var_dump($filasAfectadas);
+		/*if ($filasAfectadas == 1){
+			echo "<h3>Se ha guardado la imagen correctamente en la base de datos</h3>";
+			}
+		else {
+			echo "<h3>No ha podido guardar la imagen</h3>";
+		}*/
+						
 		// Se cierra la conexión
 		$conexion = null;
 
+		
 	 }
 
 /*AÑADIDO NUEVO PARA LA PAC*/
@@ -318,8 +329,10 @@
 
 		// Bucle que recorre todas las imágenes de la tabla imagenes y las muestra por pantalla
 		foreach($registros as $imagen){
-			echo "<img src='data:" . $imagen->tipo . "; base64," . base64_encode($imagen->contenido) . "'>" ;
+			echo "<div class='elementoSlider'><img src='data:" . $imagen->tipo . "; base64," . base64_encode($imagen->contenido) .
+			"'alt='" .$imagen->nombre .  "'></div>" ;
 		}
+	
 	}
 
 ?>
