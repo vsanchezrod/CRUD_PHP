@@ -24,7 +24,6 @@
         include 'consultas.php';
         guardarImgBBDD($ruta, $nombreImg, $tipoImg, $tamanoImg);
 
-
         }
         else {
             echo "Formato de imagen no permitido";

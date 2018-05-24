@@ -274,9 +274,9 @@
 		// Cerramos el flujo de datos
 		fclose($archivo_imagen);
 
-		//$query = "INSERT INTO imageertnes (nombre, tipo, contenido) VALUES ('$nombreImg', '$tipoImg', '$contenido')";
+		$query = "INSERT INTO imagenes (nombre, tipo, contenido) VALUES ('$nombreImg', '$tipoImg', '$contenido')";
 		
-		$query = "INSERT INTO imagenes (nombre, tipo, contenido) VALUES ('hola', 'imagen', '4544564')";
+		//$query = "INSERT INTO imagenes (nombre, tipo, contenido) VALUES ('hola', 'imagen', '4544564')";
 		$resultado = $conexion->query($query);
 				
 		// Se cierra la conexión
@@ -287,12 +287,13 @@
 /*AÑADIDO NUEVO PARA LA PAC*/
 
 	 // Función que busca las imágenes en la BD para el slider
-	 function rescatarImgBBDD(){
-		 // Se establece conexión con la base de datos
+	 function leerImgBBDD(){
+		
+		// Se establece conexión con la base de datos
 		include 'conexion.php';
 
 		// Se crea la query para consultar todas las imágenes de la tabla fotos
-		$query = "SELECT * FROM fotos";
+		$query = "SELECT * FROM imagenes";
 
 		// Dentro de la variable $resultado se obtiene un resulset con lo registros almacenados
 		$resultado = $conexion->query($query);
@@ -307,7 +308,19 @@
 	 }
 
 
+/*AÑADIDO NUEVO PARA LA PAC*/
 
+	// Función que coge el array de imágenes y las muestra en pantalla
+	function mostrarImg($registros){
+		
+		// Se establece conexión con la base de datos
+		include 'conexion.php';
+
+		// Bucle que recorre todas las imágenes de la tabla imagenes y las muestra por pantalla
+		foreach($registros as $imagen){
+			echo "<img src='data:" . $imagen->tipo . "; base64," . base64_encode($imagen->contenido) . "'>" ;
+		}
+	}
 
 ?>
 
