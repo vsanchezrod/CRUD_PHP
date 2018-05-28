@@ -34,8 +34,8 @@
         
         </div>
         
-        <div class="noticia">
-            <h3>La estación sueca de Vilsta eleva diez metros su cota con restos de una obra de Amazon</h3>
+        <div class="noticia" id="lastNew">
+            <h3>La estación sueca de Vilsta eleva 10m su cota con restos de una obra de Amazon</h3>
             <img src="images/noticia4.jpg" alt="Deportes de invierno">
             <p>Vilsta es una estación de esquí situada a una hora de coche al oeste de Estocolmo. Pertenece al municipio de Eskilstuna y fundamentalmente está dedicada al nórdico, aunque tiene cuatro pistas de alpino. La aspiración del club local, Tunafors Ski Club, era la de ganar diez metros de altura y treinta de longitud, con lo que en la primavera del año pasado se puso en marcha el proyecto inicial.</p>
         </div>

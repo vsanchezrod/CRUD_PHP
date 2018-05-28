@@ -59,6 +59,7 @@
 						<li><a href="formularioUsuario.php?opcion=crear">CREAR USUARIO</a></li>
 						<li><a href="formularioProvincias.php">CREAR PROVINCIA</a></li>
 						<li><a href="formularioImagenes.php">IMÁGENES</a></li>
+						<li><a href="formularioConfiguracion.php">CONFIGURACIÓN</a></li>
 					<?php } 
 				?>
 
