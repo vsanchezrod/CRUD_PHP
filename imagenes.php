@@ -23,14 +23,22 @@
 
         include 'consultas.php';
         guardarImgBBDD($ruta, $nombreImg, $tipoImg, $tamanoImg);
-
+      
         }
         else {
-            echo "Formato de imagen no permitido";
+            header("Location: formularioImagenes.php?resultado=errorFormato");
         }
     }
     else {
-        echo "El tamaño máximo de la imagen es de 2MB";
+        header("Location: formularioImagenes.php?resultado=errorTamano");
     }
+
+ 
+
+
+
+
+
+
 
 ?>

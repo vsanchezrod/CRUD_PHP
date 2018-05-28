@@ -280,14 +280,14 @@
 		$resultado = $conexion->query($query);
 
 		$filasAfectadas = $resultado->rowCount();
-		header("Location: formularioImagenes.php");
 		var_dump($filasAfectadas);
-		/*if ($filasAfectadas == 1){
-			echo "<h3>Se ha guardado la imagen correctamente en la base de datos</h3>";
+		
+		if ($filasAfectadas == 1){
+			header("Location: formularioImagenes.php?resultado=ok");
 			}
 		else {
-			echo "<h3>No ha podido guardar la imagen</h3>";
-		}*/
+			header("Location: formularioImagenes.php?resultado=error");
+		}
 						
 		// Se cierra la conexión
 		$conexion = null;
