@@ -275,13 +275,11 @@
 		fclose($archivo_imagen);
 
 		$query = "INSERT INTO imagenes (nombre, tipo, contenido) VALUES ('$nombreImg', '$tipoImg', '$contenido')";
-		
-		//$query = "INSERT INTO imagenes (nombre, tipo, contenido) VALUES ('hola', 'imagen', '4544564')";
+
 		$resultado = $conexion->query($query);
 
 		$filasAfectadas = $resultado->rowCount();
-		var_dump($filasAfectadas);
-		
+				
 		if ($filasAfectadas == 1){
 			header("Location: formularioImagenes.php?resultado=ok");
 			}
@@ -334,6 +332,58 @@
 		}
 	
 	}
+
+
+/* AÑADIDO NUEVO PARA LA PAC */
+
+	// Funcion que recupere el usuario del email del login
+	function recuperarUsuario($email){
+		// Se incluye la conexión
+		include 'conexion.php';
+
+		// Query que busca el usuario en función del email introducido en el login
+		$query = "SELECT * FROM usuarios WHERE Email = '$email'";
+
+		// Se ejecuta la sentencia SQL con la conexión
+		$resultado = $conexion->query($query);
+
+		// Se almacena el resultado en un array de objetos 
+		$usuario = $resultado->fetchAll (PDO::FETCH_OBJ);
+
+		return $usuario;
+	}
+
+
+/* AÑADIDO NUEVO PARA LA PAC */
+
+	// Funcion que guarda el nuevo titulo de la web para un usuario
+	function cambiarTitulo($title, $email){
+		
+		// Se incluye la conexión
+		include 'conexion.php';
+		
+		$query = "UPDATE usuarios SET titulo = '$title' WHERE Email = '$email'";
+		
+		$resultado = $conexion->query($query);
+		
+		// Se cierra la conexión
+		$conexion = null;
+	}
+
+	// Funcion que guarda el nuevo titulo de la web para un usuario
+	function cambiarColores($colorHeader, $colorBody, $colorPie, $email){
+		
+		// Se incluye la conexión
+		include 'conexion.php';
+		
+		$query = "UPDATE usuarios SET colorCabecera = '$colorHeader', colorBody = '$colorBody', colorPie = '$colorPie' WHERE Email = '$email'";
+		
+		$resultado = $conexion->query($query);
+		
+		// Se cierra la conexión
+		$conexion = null;
+	}
+
 
 ?>
 

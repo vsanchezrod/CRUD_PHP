@@ -3,13 +3,50 @@
 <html lang="en">
 <head>
 
-<?php 
+<?php
 	
-	if(isset($_POST['tituloNuevo'])){
-		$title = $_POST['tituloNuevo'];
+	// Iniciar o Renaudar sesión en el caso de que la hubiera
+	session_start();
+	include 'consultas.php';
+	
+	/* Se comprueba en la cabecera si están llegando por POST datos desde el login
+	con el fin de iniciar sesion y mostrar unos contenidos u otros*/
+	if (isset($_POST['emailLogin'])) {
+		
+		$numUsuarios = comprobarUsuario($_POST['emailLogin'], $_POST['contrasena']);
+		// Si se encuentra usuario registrado
+		if ($numUsuarios != 0) {
+			// Se almacena en la variable superglobal el email del usuario
+			$_SESSION['usuario'] = $_POST['emailLogin'];
+			
+		}
+		else {
+			// Si no hay usuario redirigimos a la página de login
+			header("Location:login.php");
+		}
+	}
+	
+	if (isset($_SESSION['usuario'])){
+		$perfilUsuario = recuperarUsuario($_SESSION['usuario']);
+		$title = $perfilUsuario[0]->titulo;
+		$colorHeader = $perfilUsuario[0]->colorCabecera;
+		$colorBody = $perfilUsuario[0]->colorBody;
+		$colorFooter = $perfilUsuario[0]->colorPie;
 	}
 	else {
 		$title = "PAC SERVIDOR";
+	}
+
+	if (isset($_POST['tituloNuevo'])){
+		$title = $_POST['tituloNuevo'];
+		cambiarTitulo($title, $_SESSION['usuario']);
+	}
+
+	if (isset($_POST['cabeceraConfig'])){
+		$colorHeader = $_POST['cabeceraConfig'];
+		$colorBody = $_POST['bodyConfig'];
+		$colorFooter = $_POST['pieConfig'];
+		cambiarColores($colorHeader, $colorBody, $colorFooter, $_SESSION['usuario']);
 	}
 
 ?>
@@ -21,35 +58,10 @@
 	<script type="text/javascript" src="js/javascript.js"></script>
 			
 </head>
-<body>
+<body style="background:<?php echo $colorBody;?>">
 
-	<header>
+	<header style="background:<?php echo $colorHeader;?>">
 		
-		<?php
-			
-			// Iniciar o Renaudar sesión en el caso de que la hubiera
-			session_start();
-			include 'consultas.php';
-			
-			/* Se comprueba en la cabecera si están llegando por POST datos desde el login
-			con el fin de iniciar sesion y mostrar unos contenidos u otros*/
-			if (isset($_POST['emailLogin'])) {
-				
-				$usuario = comprobarUsuario($_POST['emailLogin'], $_POST['contrasena']);
-				// Si se encuentra usuario registrado
-				if ($usuario != 0) {
-					// Se almacena en la variable superglobal el email del usuario
-					$_SESSION['usuario'] = $_POST['emailLogin'];
-				}
-
-				else {
-					// Si no hay usuario redirigimos a la página de login
-					header("Location:login.php");
-				}
-			}
-
-		?>
-
 		<h1 class="titulo">PHP - MYSQL </h1>
 		<div id="menu">
 			<ul>
@@ -64,6 +76,7 @@
 					else { ?>
 						<!--Se crea un nuevo botón para acceder al LOGIN del usuario-->
 						<!-- SI hay session abierta del usuario:-->
+						
 						<button id="logout"><a href="index.php?logout=1">LOGOUT</a></button>  
 						<li> <?php echo $_SESSION['usuario']; ?> </li>
 						<li><a href="index.php">INICIO</a></li>

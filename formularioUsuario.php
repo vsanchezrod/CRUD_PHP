@@ -123,8 +123,7 @@ Se crea formulario completo que se usa para insertar usuarios o actualizar datos
 
 	</div>
 	
-	<div 		// Se redirige al login de nuevo
-				//header("Location: formularioUsuario.php?opcion=crearIncorrecto");class="row">
+	<div class="row">
 		
 		<label for="direccion">DIRECCIÓN</label>
 		<input name="direccion" type="text" value="<?php if(!empty($usuario[0]->Direccion)) {echo $usuario[0]->Direccion;} ?>">
