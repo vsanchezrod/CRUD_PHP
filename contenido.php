@@ -2,16 +2,14 @@
 
 	if(isset($_GET['logout'])){
 		if ($_GET['logout'] == "1") {
-			session_start();
 			session_destroy();
 			header ("Location:index.php");
 		}
 	}
 
-	/*NUEVO GENERACIÓN DE ARCHIVOS XML Y TXT*/
+	/* GENERACIÓN DE ARCHIVOS XML Y TXT*/
 	if (!empty ($_GET['archivo'])) {
 
-		include 'consultas.php';
 		if ($_GET['archivo'] == "xml") {
 			crearXML();
 			echo "<H3 class='fade'>Archivo XML generado. <a href='xml/usuarios.xml' download> Descargar!</a></H3></br>";
@@ -26,4 +24,5 @@
 	// Se elimina todo el código que mostraba la tabla de usuarios, y se incluyen las noticias en el contenido principal
 	include 'noticias.php';
 
+	
 ?>

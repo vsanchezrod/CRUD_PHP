@@ -240,29 +240,31 @@ label {
 	margin-left: 12.5%;
 }
 
-#formularioConfig {
+#formularioConfig, #formularioConfigColor {
 	width: 20%;
 	height: auto;
 }
 
-#formularioConfig #colores {
+#formularioConfigColor #colores {
 	width: 80%;
 	margin-left: 10%;
+	margin-bottom: 10px;
 }
 
-#formularioConfig .inputColor{
+#formularioConfigColor .inputColor{
 	display: inline-block;
+	margin-left: 20	px;
 	width: 20%;
 }
 
-#formularioConfig label{
+#formularioConfig label, #formularioConfigColor label {
 	display: inline-block;
 	width: 60%;
 	margin: 10px;
 	font-size: 20px;
 }
 
-#formularioConfig .enviar, #formularioConfig .cancelar{
+#formularioConfig .enviar, #formularioConfig .cancelar, #formularioConfigColor .enviar, #formularioConfigColor .cancelar {
 	display: inline-block;
 	margin-left: 10px;
 	margin-top: 10px;
@@ -270,7 +272,7 @@ label {
 	width: 100px;
 }
 
-#formularioConfig h4 {
+#formularioConfig h4, #formularioConfigColor h4 {
 	text-align: center;
 	padding: 5px;
 	margin: 20px auto;
@@ -280,7 +282,7 @@ label {
 	text-decoration: underline;
 }
 
-#formularioConfig .inputColor {
+#formularioConfigColor .inputColor {
 	width: 50px;
 }
 

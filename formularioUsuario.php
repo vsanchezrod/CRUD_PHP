@@ -2,7 +2,6 @@
 
 	//Se incluye la cabecera.php	
 	include 'cabecera.php';
-	include 'consultas.php';
 	
 	// NUEVO - Si no hay sesion iniciada se redirige al index
 	if(!isset($_SESSION['usuario'])){

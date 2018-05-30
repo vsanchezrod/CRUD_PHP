@@ -2,8 +2,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+<?php 
+	
+	if(isset($_POST['tituloNuevo'])){
+		$title = $_POST['tituloNuevo'];
+	}
+	else {
+		$title = "PAC SERVIDOR";
+	}
+
+?>
+
 	<meta charset="UTF-8">
-	<title>UF3 PAC1</title>
+	<title><?php echo $title;?></title>
 	<link rel="stylesheet" href="css/estilos.css">
 	<script	type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="js/javascript.js"></script>
@@ -17,13 +29,13 @@
 			
 			// Iniciar o Renaudar sesión en el caso de que la hubiera
 			session_start();
-
+			include 'consultas.php';
+			
 			/* Se comprueba en la cabecera si están llegando por POST datos desde el login
 			con el fin de iniciar sesion y mostrar unos contenidos u otros*/
 			if (isset($_POST['emailLogin'])) {
-				include 'consultas.php';
+				
 				$usuario = comprobarUsuario($_POST['emailLogin'], $_POST['contrasena']);
-						
 				// Si se encuentra usuario registrado
 				if ($usuario != 0) {
 					// Se almacena en la variable superglobal el email del usuario
@@ -46,7 +58,6 @@
 					// Si NO hay session abierta del usuario:
 					if(!isset($_SESSION['usuario'])){ ?>
 						<button><a href="login.php">LOGIN</a></button>
-						<!--<button onclick="abrirVentana()">LOGIN</button>-->
 						<li><a href="index.php">INICIO</a></li>
 					<?php }
 
