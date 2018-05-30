@@ -1,11 +1,11 @@
 <?php
 
-	if(isset($_GET['logout'])){
+	/*if(isset($_GET['logout'])){
 		if ($_GET['logout'] == "1") {
 			session_destroy();
 			header ("Location:index.php");
 		}
-	}
+	}*/
 
 	/* GENERACIÓN DE ARCHIVOS XML Y TXT*/
 	if (!empty ($_GET['archivo'])) {

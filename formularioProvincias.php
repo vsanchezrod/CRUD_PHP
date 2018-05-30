@@ -13,7 +13,6 @@
 
 		// Se guarda en una variable el nombre de la provincia
 		$nombre = $_POST['nombre'];
-		include 'consultas.php';
 		insertarProvincia($nombre);
 		
 		// Redirección al menuUsuarios.php pasándole el resultado de provincia creada

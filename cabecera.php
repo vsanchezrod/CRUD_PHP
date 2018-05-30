@@ -8,6 +8,13 @@
 	// Iniciar o Renaudar sesión en el caso de que la hubiera
 	session_start();
 	include 'consultas.php';
+
+	if(isset($_GET['logout'])){
+		if ($_GET['logout'] == "1") {
+			session_destroy();
+			header ("Location:index.php");
+		}
+	}
 	
 	/* Se comprueba en la cabecera si están llegando por POST datos desde el login
 	con el fin de iniciar sesion y mostrar unos contenidos u otros*/
